@@ -4,8 +4,21 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     font-family: 'Raleway', sans-serif;
-
+    
 }
+/*ESTILOS GENERALES*/
+.a-card{
+    text-decoration:none;
+}
+li{
+    list-style: none;
+}
+li a{
+    color: white;
+    text-decoration: none;
+}
+
+/*ESTILOS DE HEADER*/
 .banner-hero{
     background-image: url("./assets/funkos-banner.webp");
     width: 100%;
@@ -13,3 +26,56 @@
     background-size: cover;
 }
 
+.nav-bar, .footer-nav{
+    background-color: #30343f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+ul {
+    display: flex;
+    align-items: flex-end;
+}
+
+.navBar-li{
+    margin: 10px;
+    padding: 10px;
+}
+
+/*ESTILOS FOOTER */
+
+.navBar-ul-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.footer-p{
+    background-color: #30343f;
+    color: white;
+    text-align: center;
+}
+
+/*ESTILOS SHOP*/
+.main-container{
+    display: flex;
+}
+.row-products{
+    display: flex;
+    padding: 10px;
+    margin:10px;
+}
+.img-funko{
+   height:  250px;
+}
+.shop-product-name{
+    font-size: 10px;
+
+}
+.shop-product-license, .shop-product-price, .shop-product-name{
+    color:black;
+}
+.shop-product-installments{
+    color: #1d84b5;
+    font-weight: bold;
+}
