@@ -79,3 +79,8 @@ ul {
     color: #1d84b5;
     font-weight: bold;
 }
+
+/*ESTILOS ITEM*/
+.card-product-item{
+    display: flex;
+}
