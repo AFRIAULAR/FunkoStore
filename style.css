@@ -55,6 +55,13 @@ ul {
     color: white;
     text-align: center;
 }
+/* ESTILOS HOME */
+.img-product-card{
+    height: 300px;
+}
+.product-card-container{
+    display: flex;
+}
 
 /*ESTILOS SHOP*/
 .main-container{
