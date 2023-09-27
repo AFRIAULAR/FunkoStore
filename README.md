@@ -11,10 +11,10 @@ JavaScript
 
 
 _Autores: Africa Aular
-Anabella Bernachea
-Andrea Cadona
-Moises Flores Navaja
-Carina Londero
-Agustina Peredo 
-Rivera Nestor
-Roberto Salinas_
+          Anabella Bernachea
+          Andrea Cadona
+          Moises Flores Navaja
+          Carina Londero
+          Agustina Peredo 
+          Rivera Nestor
+          Roberto Salinas_
