@@ -156,3 +156,70 @@ th{
     text-decoration-color: red;
     margin: 10px;
 }
+
+/*ESTILO DE LISTADO*/
+
+form {
+    padding-left: 120px;
+}
+
+.listado {
+    
+    padding-left: 89px; 
+    font-family: Raleway;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 49px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #1F1F1F;
+}
+
+.addlista {
+    padding-left: 712px;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.tablita {
+    width: 1400px;
+    height: 928.95px;
+    top: 260.28px;
+    background-color: white;
+    
+   
+}
+
+.filalista {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 1000;
+    line-height: 100px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #1F1F1F;
+    background-color: white;
+    
+     
+}
+
+.filabody{
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 100px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    color: #1F1F1F;
+    background-color: white;   
+    
+}
+
+
+
+
+
