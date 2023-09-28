@@ -10,11 +10,11 @@ Este es un proyecto como parte de un challenge integrador para el curso del prog
 JavaScript
 
 
-_Autores: Africa Aular
-          Anabella Bernachea
-          Andrea Cadona
-          Moises Flores Navaja
-          Carina Londero
-          Agustina Peredo 
-          Rivera Nestor
+_Autores: Africa Aular,
+          Anabella Bernachea,
+          Andrea Cadona,
+          Moises Flores Navaja,
+          Carina Londero,
+          Agustina Peredo,
+          Rivera Nestor,
           Roberto Salinas_
