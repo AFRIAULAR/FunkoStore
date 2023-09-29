@@ -159,12 +159,36 @@ th{
 
 /*ESTILO DE LISTADO*/
 
-form {
-    padding-left: 120px;
+.searchbar {
+    padding-left: 120px; 
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    
 }
 
-.listado {
-    
+.searchinput {
+    border-radius: 6px;
+    outline: none;
+    width: 500px;
+    height: 44.3px;
+    flex-shrink: 0;
+       
+}
+
+.searchbutton {
+    width: 42px;
+    height: 42px;
+    top: 182.28px;
+    left: 110px;
+    border-radius: 6px;
+    margin-right: 10px;
+
+}
+
+.listado {    
     padding-left: 89px; 
     font-family: Raleway;
     font-size: 42px;
@@ -189,7 +213,8 @@ form {
     width: 1400px;
     height: 928.95px;
     top: 260.28px;
-    background-color: white;
+    background: #FFF;
+    margin-left: 145px;
     
    
 }
