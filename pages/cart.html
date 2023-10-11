@@ -55,12 +55,12 @@
                         <div>
                             <p class="p-td-nameProduct">BABY YODA BLUEBALL</p>
                             <p class="p-td-license">Star wars</p>
-                            <p class="p-td-price">$1799.99</p>
+                            <p class="p-td-price">1799.99</p>
                         </div>
                     </td>
-                    <td class="td-quant"><input type="number" value="1" min="1" max="10"></td>
-                    <td class="td-totalPrice">$20.00 </td>
-                    <td class="td-delete"><button class="delete-button">X</button></td>
+                    <td class="td-quant"><input class="cart-item-count" type="number" value="1" min="1" max="10"></td>
+                    <td class="td-totalPrice"><p class="cart-item-price" >1799.99</p></td>
+                    <td class="td-delete"><button class="cart-item-delete delete-button">X</button></td>
                 </tr>
                 <tr class="tr-detail">
                     <td class="td-title-product">
@@ -68,12 +68,12 @@
                         <div>
                             <p class="p-td-nameProduct">PIDGEOTTO</p>
                             <p class="p-td-license">Pokemon</p>
-                            <p class="p-td-price">$1799.99</p>
+                            <p class="p-td-price">1799.99</p>
                         </div>
                     </td>
-                    <td class="td-quant"><input type="number" value="1" min="1" max="10"></td>
-                    <td class="td-totalPrice">$20.00 </td>
-                    <td class="td-delete"><button class="delete-button">X</button></td>
+                    <td class="td-quant"><input class="cart-item-count" type="number" value="1" min="1" max="10"></td>
+                    <td class="td-totalPrice"><p class="cart-item-price" >1799.99</p></td>
+                    <td class="td-delete"><button class="cart-item-delete delete-button">X</button></td>
                 </tr>
         </table>
         <section class="section-resume">
@@ -81,20 +81,20 @@
             <div class="resume-container">
                 <div class="resume-quant">
                     <span class="resume-cols">Cantidad de elementos</span>
-                    <span class="resume-cols">3</span>
+                    <span class="resume-cols"><p id="quant">2</p></span>
                 </div>
                 <div class="resume-quant">
                     <span class="resume-cols">Subtotal</span>
-                    <span>$5399.97</span>
+                    <span><p id="subtotal">5399.97</p></span>
                 </div>
                 <div class="resume-quant">
                     <span class="resume-cols">ENVIO</span>
-                    <span>$0.00</span>
+                    <span><p id="envio">10.00</p></span>
                 </div>
                 <hr class="hr-colored">
                 <div class="resume-quant">
                     <span class="resume-cols">TOTAL</span>
-                    <span>$5399.97</span>
+                    <span><p id="total">5399.97</p></span>
                 </div>
             </div>
         </section>
@@ -125,5 +125,6 @@
             <p class="footer-p">All rights reserved 2023 - Funkoshop @copyright</p>
         </section>
     </footer>
+    <script src="../app.js"></script>
 </body>
 </html>
