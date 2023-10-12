@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Cart</title>
 </head>
+
 <body>
     <header>
         <nav class="nav-bar">
@@ -38,64 +40,135 @@
         </nav>
     </header>
     <main>
-        <h3 class="cart-H3">CARRITO DE COMPRAS</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Detalle de Producto</th>
-                    <th>Cantidad</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="tr-detail">
-                    <td class="td-title-product">
-                        <img src="../assets/star-wars/baby-yoda-1.webp" class="td-img">
-                        <div>
-                            <p class="p-td-nameProduct">BABY YODA BLUEBALL</p>
-                            <p class="p-td-license">Star wars</p>
-                            <p class="p-td-price">1799.99</p>
+        <div class="d-flex justify-content-center align-items-center my-3">
+            <div class="text-center">
+                <h3>CARRITO DE COMPRAS</h3>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="w-75 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Detalle de Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr-detail">
+                            <td class="td-title-product">
+                                <img src="../assets/star-wars/baby-yoda-1.webp" class="td-img">
+                                <div>
+                                    <p class="p-td-nameProduct">BABY YODA BLUEBALL</p>
+                                    <p class="p-td-license">Star wars</p>
+                                    <div class="input-group mb-3">
+                                        <span class="">$</span>
+                                        <span class="">
+                                            <p class="p-td-price">1799.99</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-quant">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm cart-item-count custom-input"
+                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
+                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
+                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
+                                </div>
+                            </td>
+                            <td class="td-totalPrice">
+                                <div class="input-group mb-3">
+                                    <span class="">$</span>
+                                    <span class="">
+                                        <p class="cart-item-price">1799.99</p>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="td-delete">
+                                <button type="button" class="btn-close cart-item-delete delete-button"
+                                    aria-label="Close"></button>
+                            </td>
+                        </tr>
+                        <tr class="tr-detail">
+                            <td class="td-title-product">
+                                <img src="../assets/pokemon/pidgeotto-1.webp" class="td-img">
+                                <div>
+                                    <p class="p-td-nameProduct">PIDGEOTTO</p>
+                                    <p class="p-td-license">Pokemon</p>
+                                    <div class="input-group mb-3">
+                                        <span class="">$</span>
+                                        <span class="">
+                                            <p class="p-td-price">1799.99</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-quant col-2">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm cart-item-count custom-input"
+                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
+                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
+                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
+                                </div>
+                            </td>
+                            <td class="td-totalPrice">
+                                <div class="input-group mb-3">
+                                    <span class="">$</span>
+                                    <span class="">
+                                        <p class="cart-item-price">1799.99</p>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="td-delete">
+                                <button type="button" class="btn-close cart-item-delete delete-button"
+                                    aria-label="Close"></button>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+        <section class=""> <!-- SAQUE EL NOMBRE DE LA CLASE-->
+            <div class="d-flex justify-content-center align-items-center my-3">
+                <div class="text-center">
+                    <h3>Resumen de Compra</h3>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center ">
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="">
+                        <div class="resume-quant">
+                            <span class="resume-cols">Cantidad de elementos</span>
+                            <span class="resume-cols mx-5">
+                                <p id="quant">2</p>
+                            </span>
                         </div>
-                    </td>
-                    <td class="td-quant"><input class="cart-item-count" type="number" value="1" min="1" max="10"></td>
-                    <td class="td-totalPrice"><p class="cart-item-price" >1799.99</p></td>
-                    <td class="td-delete"><button class="cart-item-delete delete-button">X</button></td>
-                </tr>
-                <tr class="tr-detail">
-                    <td class="td-title-product">
-                        <img src="../assets/pokemon/pidgeotto-1.webp" class="td-img">
-                        <div>
-                            <p class="p-td-nameProduct">PIDGEOTTO</p>
-                            <p class="p-td-license">Pokemon</p>
-                            <p class="p-td-price">1799.99</p>
+                        <div class="resume-quant">
+                            <span class="resume-cols">Subtotal</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="subtotal">5399.97</p>
+                            </span>
                         </div>
-                    </td>
-                    <td class="td-quant"><input class="cart-item-count" type="number" value="1" min="1" max="10"></td>
-                    <td class="td-totalPrice"><p class="cart-item-price" >1799.99</p></td>
-                    <td class="td-delete"><button class="cart-item-delete delete-button">X</button></td>
-                </tr>
-        </table>
-        <section class="section-resume">
-            <h3 class="cart-H3-resume">RESUMEN</h3>
-            <div class="resume-container">
-                <div class="resume-quant">
-                    <span class="resume-cols">Cantidad de elementos</span>
-                    <span class="resume-cols"><p id="quant">2</p></span>
-                </div>
-                <div class="resume-quant">
-                    <span class="resume-cols">Subtotal</span>
-                    <span><p id="subtotal">5399.97</p></span>
-                </div>
-                <div class="resume-quant">
-                    <span class="resume-cols">ENVIO</span>
-                    <span><p id="envio">10.00</p></span>
-                </div>
-                <hr class="hr-colored">
-                <div class="resume-quant">
-                    <span class="resume-cols">TOTAL</span>
-                    <span><p id="total">5399.97</p></span>
-                </div>
+                        <div class="resume-quant">
+                            <span class="resume-cols">ENVIO</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="envio">10.00</p>
+                            </span>
+                        </div>
+                        <hr class="hr-colored">
+                        <div class="resume-quant">
+                            <span class="resume-cols">TOTAL</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="total">5399.97</p>
+                            </span>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </section>
     </main>
@@ -127,4 +200,5 @@
     </footer>
     <script src="../app.js"></script>
 </body>
+
 </html>

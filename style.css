@@ -245,6 +245,18 @@ th{
 }
 
 
+/*------para bootstrap*/
 
+.custom-input[type=number] {
+    -moz-appearance: textfield;
+}
 
-
+/*para boton aumentar siguiendo estetica del logo*/
+.custom-btn-aumentar {
+    background-color: #E43E3E !important;
+    color: white !important;
+}
+/*cambio el color pordefecto de los botones*/
+.btn-primary {
+    color: white;
+}
