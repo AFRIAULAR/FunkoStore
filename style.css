@@ -43,6 +43,39 @@ ul {
     padding: 10px;
 }
 
+.new-arrivals{
+    color: #FFF;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    filter: none;
+}
+.text-arrivals{
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    filter: none;
+}
+.cart-button1{
+    padding: 10px 30px 10px;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    color: #30343f;
+    text-decoration: none;
+}
+
+.cart-button2{
+    padding: 10px 30px 10px;
+    background-color: #30343f;
+    border-radius: 50px;
+    color: whitesmoke;
+    text-decoration: none;
+    display: grid;
+}
+
 /*ESTILOS FOOTER */
 
 .navBar-ul-footer{
@@ -61,6 +94,21 @@ ul {
 }
 .product-card-container{
     display: flex;
+}
+
+.product-card-description{
+    width: 350px;
+    border-bottom: 3px solid #ff3333;
+}
+
+.product-card-right{
+    display: grid;
+    align-self: center;
+}
+
+.product-card-left{
+    display: grid;
+    align-self: center;
 }
 
 /*ESTILOS SHOP*/
