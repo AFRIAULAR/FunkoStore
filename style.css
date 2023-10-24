@@ -25,9 +25,7 @@ li a{
     height: 300px;
     background-size: cover;
 }
-.text-banner :first-child {
-filter: none !important;
-}
+
 .nav-bar, .footer-nav{
     background-color: #30343f;
     color: white;
