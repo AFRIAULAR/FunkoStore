@@ -255,7 +255,7 @@ th{
     font-size: 42px;
     font-weight: 700;
     line-height: 49px;
-    letter-spacing: 0.04em;
+    letter-spacing: 1.68px;
     text-align: center;
     color: #1F1F1F;
 }
@@ -320,4 +320,89 @@ th{
 /*cambio el color pordefecto de los botones*/
 .btn-primary {
     color: white;
+}
+
+/*Estilo para admin, login, create, edit y register*/
+
+.input-data{
+    border: solid 0px;
+    border-bottom: 2px solid #ff3333;
+    /*display: flex;
+    flex-direction: row;
+    align-items: center;  
+    gap: 10px; */
+}
+.input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+    gap: 10px; 
+}
+
+.input-data::placeholder {
+    color: #E0E0E0; 
+    font-size: 16px; 
+    text-align: center;
+}
+.cart-button3{
+       width: 102.995px;
+       height: 39.062px;
+       flex-shrink: 0;
+       color: #FFF;
+       background-color: #ff3333;
+       border: solid 0px;
+       margin-right: 30px
+}
+.form {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.listado2{
+    color: #1F1F1F;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.68px;
+}
+.text-center{
+    margin-top: 30px;
+}
+
+label{
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.96px;
+}
+#text1{
+    color: #1F1F1F;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.68px;
+}
+
+#text3{   
+    color: #1F1F1F;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.28px;
+}
+#check{
+    border-style: none;
+    border-radius: 20px;
+    border: 10px solid #1F1F1F;
 }
