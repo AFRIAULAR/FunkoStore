@@ -3,10 +3,17 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mainRoutes = require('./src/routes/mainRoutes.js');
+const path = require('path');
 //override para habilitar metodos put y delete
 const methodOverride = require('method-override');
 
 const port = process.env.PORT;
+
+//Configuracion de mototr de plantilla
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'./public/views'));
+
+
 
 app.use(methodOverride('__method'));
 app.use(express.urlencoded());
@@ -21,6 +28,6 @@ app.use((req, res, next) => {
 
 
 app.listen(port, () => {
-    console.log('Puerto escuchando en localhost:3000');
+    console.log(`Puerto escuchando en localhost:${port}`);
 });
 
