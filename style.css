@@ -345,8 +345,9 @@ th{
     text-align: center;
 }
 .cart-button3{
-       width: 102.995px;
-       height: 39.062px;
+       width: auto;
+       height: auto;
+       padding: 10px 20px;
        flex-shrink: 0;
        color: #FFF;
        background-color: #ff3333;
