@@ -29,17 +29,86 @@
                 <a href="../index.html">VER TIENDA</a>
             </li>
             <li class="navBar-li">
-                <a href="#">ADMIN</a>
+                <a href="./listado.html">ADMIN</a>
             </li>
             <li class="navBar-li">
-                <a href="">SALIR</a>
+                <a href="#">SALIR</a>
             </li>
         </ul>
     </nav>
 </header>
 
 <main>
+    <div class="text-center">    
+        <h1 class="listado2">EDITAR ITEM</h1>
+      
+         
+            <form action="" method="" class="form"> 
+            <div class="container-options"> 
+              <label for="form-box">Categoría:</label>
+              <select class="checkbox" id="form-box">
+                <option value="" disabled selected hidden>Seleccionar</option>
+                <option value="Figuras coleccionables">Figuras Coleccionables</option>
+                <option value="Llaveros">Llaveros</option>
+                <option value="Remeras">Remeras</option>
+              </select>
+           
+                <label for="form-lic">Licencia:</label>
+                <select class="checkbox" id="form-lic">
+                  <option value="" disabled selected hidden>Seleccionar</option>
+                  <option value="Nintendo">Nintendo</option>
+                  <option value="Warner Brothers">Warner Brothers</option>
+                  <option value="Disney">Disney</option>
+                  <option value="Crunchyroll">Crunchyroll</option>
+                  <option value="Netflix">Netflix</option>
+                  <option value="Tic Tok">Tic Tok</option>
+                </select> 
+            </div>
+                
+                <div class="container-options">
+                    <label for="Produc-name">Nombre del producto:</label>
+                <input type="text" placeholder="Kakashi Hatake Shippuden Saga" id="Produc-name" class="input-data">
+               </div>
+                
+                <textarea rows="4" cols="50" placeholder="" class="checkbox container-options">Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori</textarea>
+                
+                <div class="container-options">
+                    <label for="Produc-id">SKU:</label>
+                <input type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data">
+                <label for="Produc-price">PRECIO:</label>
+                <input type="text" placeholder="$0.000,00" id="Produc-price" class="input-data">
+                <label for="Produc-stock">STOCK:</label>
+                <input type="text" placeholder="0" id="Produc-stock" class="input-data">
+               </div>
 
+               <div class="container-options">
+                <label for="Descuento">Descuento:</label>
+                <input type="text" placeholder="0%" id="Descuento" class="input-data"> 
+
+                <label for="cuotas">CUOTAS:</label>
+              <select class="checkbox" id="cuotas">
+                <option value="" disabled selected hidden>6 cuotas sin interés</option>
+                <option value="3 cuotas sin interes">3 cuotas sin interés</option>
+                <option value="6 cuotas con recargo">6 cuotas con recargo</option>
+                <option value="9 cuotas con recargo">9 cuotas con recargo</option>
+                <option value="12 cuotas con recargo">12 cuotas con recargo</option>
+                <option value="18 cuotas con recargo">18 cuotas con recargo</option>
+                <option value="24 cuotas con recargo">24 cuotas con recargo</option>
+               </select>
+               </div>
+
+              <div class="container-options">
+                <label for="image" style="cursor: pointer;">Imagenes:</label>
+               <!--<input type="file" name="Elegir archivo" id="image" accept="image/*"> -->
+               <button id="image" accept="image/*" type="file" class="button">Elegir Archivos</button>
+              </div>
+              <br>
+              <div class=""><img src="../assets/naruto/kakashi-naruto.png" alt="imagen miniatura de Kakashi Hatake de la coleccion Naruto Shippuden" class="mini-img">
+                <img src="../assets/naruto/kakashi-box.png" alt="imagen miniatura producto Kakashi Hatake de la Coleccion Naruto Shippuden" class="mini-img"></div>
+                
+              <button class="cart-button3">Modificar producto</button>
+              
+    </form>          
 </main>
 
 <footer>
@@ -48,21 +117,21 @@
             <div class="footer-li">
                 <ul class="navBar-ul-footer">
                     <li class="navBarFooter-li">
-                        <a href="./pages/shop.html">SHOP</a>
+                        <a href="./shop.html">SHOP</a>
                     </li>
                     <li class="navBarFooter-li">
                         <a href="./register.html">REGISTRARSE</a>
                     </li>
                     <li class="navBarFooter-li">
-                        <a href="./pages/login.html">LOGIN</a>
+                        <a href="./login.html">LOGIN</a>
                     </li>
                     <li class="navBarFooter-li">
-                        <a href="./pages/contact.html">CONTACTO</a>
+                        <a href="./contact.html">CONTACTO</a>
                     </li>
                 </ul>
             </div>
             <div class="footer-logo">
-                <img src="../assets/branding/isotype.svg">
+               <a href="../index.html"> <img src="../assets/branding/isotype.svg"></a>
             </div>
         </nav>
         <p class="footer-p">All rights reserved 2023 - Funkoshop @copyright</p>
