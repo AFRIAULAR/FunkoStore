@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;900&family=Raleway:wght@100;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="icon" href="../assets/branding/isotype.svg" type="Isologotipo pestaña">
+    <title>Cart</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <picture>
+                <a href="../index.html">
+                    <img src="../assets/branding/logo_light_horizontal.svg" alt="Isologotipo de la marca funko">
+                </a>
+            </picture>
+            <ul class="navBar-ul">
+                <li class="navBar-li">
+                    <a href="./shop.html">SHOP</a>
+                </li>
+                <li class="navBar-li">
+                    <a href="./contact.html">CONTACTO</a>
+                </li>
+                <li class="navBar-li">
+                    <a href="./login.html">LOGIN</a>
+                </li>
+                <li class="navBar-li">
+                    <a href="./cart.html"><img src="../assets/icons/cart-icon.svg" alt="Carrito de compras"></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="d-flex justify-content-center align-items-center my-3">
+            <div class="text-center">
+                <h3>CARRITO DE COMPRAS</h3>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="w-75 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Detalle de Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr-detail">
+                            <td class="td-title-product">
+                                <img src="../assets/star-wars/baby-yoda-1.webp" class="td-img">
+                                <div>
+                                    <p class="p-td-nameProduct">BABY YODA BLUEBALL</p>
+                                    <p class="p-td-license">Star wars</p>
+                                    <div class="input-group mb-3">
+                                        <span class="">$</span>
+                                        <span class="">
+                                            <p class="p-td-price">1799.99</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-quant">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm cart-item-count custom-input"
+                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
+                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
+                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
+                                </div>
+                            </td>
+                            <td class="td-totalPrice">
+                                <div class="input-group mb-3">
+                                    <span class="">$</span>
+                                    <span class="">
+                                        <p class="cart-item-price">1799.99</p>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="td-delete">
+                                <button type="button" class="btn-close cart-item-delete delete-button"
+                                    aria-label="Close"></button>
+                            </td>
+                        </tr>
+                        <tr class="tr-detail">
+                            <td class="td-title-product">
+                                <img src="../assets/pokemon/pidgeotto-1.webp" class="td-img">
+                                <div>
+                                    <p class="p-td-nameProduct">PIDGEOTTO</p>
+                                    <p class="p-td-license">Pokemon</p>
+                                    <div class="input-group mb-3">
+                                        <span class="">$</span>
+                                        <span class="">
+                                            <p class="p-td-price">1799.99</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-quant col-2">
+                                <div class="input-group">
+                                    <input class="form-control form-control-sm cart-item-count custom-input"
+                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
+                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
+                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
+                                </div>
+                            </td>
+                            <td class="td-totalPrice">
+                                <div class="input-group mb-3">
+                                    <span class="">$</span>
+                                    <span class="">
+                                        <p class="cart-item-price">1799.99</p>
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="td-delete">
+                                <button type="button" class="btn-close cart-item-delete delete-button"
+                                    aria-label="Close"></button>
+                            </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+        <section class=""> <!-- SAQUE EL NOMBRE DE LA CLASE-->
+            <div class="d-flex justify-content-center align-items-center my-3">
+                <div class="text-center">
+                    <h3>Resumen de Compra</h3>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center ">
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="">
+                        <div class="resume-quant">
+                            <span class="resume-cols">Cantidad de elementos</span>
+                            <span class="resume-cols mx-5">
+                                <p id="quant">2</p>
+                            </span>
+                        </div>
+                        <div class="resume-quant">
+                            <span class="resume-cols">Subtotal</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="subtotal">5399.97</p>
+                            </span>
+                        </div>
+                        <div class="resume-quant">
+                            <span class="resume-cols">ENVIO</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="envio">10.00</p>
+                            </span>
+                        </div>
+                        <hr class="hr-colored">
+                        <div class="resume-quant">
+                            <span class="resume-cols">TOTAL</span>
+                            <span class="">$</span>
+                            <span class="mb-2">
+                                <p id="total">5399.97</p>
+                            </span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="footer-container">
+            <nav class="footer-nav">
+                <div class="footer-li">
+                    <ul class="navBar-ul-footer">
+                        <li class="navBarFooter-li">
+                            <a href="./shop.html">SHOP</a>
+                        </li>
+                        <li class="navBarFooter-li">
+                            <a href="./register.html">REGISTRARSE</a>
+                        </li>
+                        <li class="navBarFooter-li">
+                            <a href="./login.html">LOGIN</a>
+                        </li>
+                        <li class="navBarFooter-li">
+                            <a href="./contact.html">CONTACTO</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-logo">
+                   <a href="../index.html"> <img src="../assets/branding/isotype.svg"></a>
+                </div>
+            </nav>
+            <p class="footer-p">All rights reserved 2023 - Funkoshop @copyright</p>
+        </section>
+    </footer>
+    <script src="../app.js"></script>
+</body>
+
+</html>
