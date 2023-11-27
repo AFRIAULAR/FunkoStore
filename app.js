@@ -3,6 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mainRoutes = require('./src/routes/mainRoutes.js');
+const adminRoutes = require('./src/routes/adminRoutes.js');
+const authRoutes = require('./src/routes/authRoutes.js');
+const shopRoutes = require('./src/routes/storeRoutes.js');
 const path = require('path');
 //override para habilitar metodos put y delete
 const methodOverride = require('method-override');
@@ -20,6 +23,9 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', mainRoutes);
+app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
+app.use('/shop', shopRoutes);
 
 // middleware para manejar error 404
 app.use((req, res, next) => {

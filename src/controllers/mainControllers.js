@@ -1,3 +1,4 @@
+const express = require('express');
 
 
 module.exports ={
@@ -6,5 +7,6 @@ module.exports ={
     },
     contact: (req, res) => res.send("Pagina de Contacto"),
     about: (req, res) => res.send("Pagina Sobre Nosotros"),
-    faqs: (req, res) => res.send("Pagina de preguntas frecuentes")
+    faqs: (req, res) => res.send("Pagina de preguntas frecuentes"),
 }
+
