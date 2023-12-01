@@ -14,7 +14,7 @@ const port = process.env.PORT;
 
 //Configuracion de mototr de plantilla
 app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'./public/views'));
+app.set('views',path.join(__dirname,'./src/views'));
 
 
 
