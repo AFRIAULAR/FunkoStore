@@ -1,8 +1,17 @@
 const express= require ('express')
+const productService = require('../../services/productService');
+
 
 module.exports = {
-    shop: (req, res) =>{
-        res.render('store/shop.ejs')
+    shop: async (req, res) =>{
+        try {
+            const products = await productService.getProducts();
+            res.render('store/shop.ejs',{products})
+        }
+        catch(error) {
+            console.error('Error al obtener los productos');
+            res.status(500).send('Error al obtener productos');
+        }
     },
     item: (req,res) => res.send ('Pagina de item'), /*solicitud de item especifico*/
     cartItem: (req,res) => res.send ('Pagina de agregar item'), /*envio de datos*/
