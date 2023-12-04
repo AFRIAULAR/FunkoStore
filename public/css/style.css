@@ -19,7 +19,7 @@ li a{
 
 /*ESTILOS DE HEADER*/
 .banner-hero{
-    background-image: url("../assets/funkos-banner.png");
+    background-image: url("../assets/funkos-banner.webp");
     width: 100%;
     height: 300px;
     background-size: cover;

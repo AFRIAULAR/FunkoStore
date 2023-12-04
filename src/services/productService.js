@@ -6,9 +6,15 @@ const getProducts = async (params) => {
 
 const getProductById = async (id) => {
     return products.getProductById(id);
+};
+
+const getRelated = async (id) => {
+    return products.getRelated(id);
 }
 
 
 module.exports = {
-    getProducts
+    getProducts,
+    getProductById,
+    getRelated
 }

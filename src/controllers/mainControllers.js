@@ -1,5 +1,5 @@
 const express = require('express');
-const itemService = require('../../services/itemService')
+const itemService = require('../services/itemService')
 
 module.exports ={
     /*home: (req, res) =>{

@@ -13,8 +13,8 @@ const getProducts = async () => { /*Obtengo todos los productos*/
 
 const getProductById = async (productId) => {  /* */
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE product_id = ?;',[productId]);
-        return rows;
+        const [row] = await conn.query('SELECT * FROM product WHERE product_id = ?;',[productId]);
+        return row;
     }catch (error){
         throw error;
     } finally {
@@ -55,10 +55,31 @@ const getProductsMajorPriceRange = async (priceRange) => {
     }
 }
 
+const getRelated = async (productId) => {
+    try {
+        const [rows] = await conn.query(
+            'SELECT * FROM product WHERE product_id IN(\
+                SELECT DISTINCT product_id FROM CollectionProduct \
+                    WHERE collection_id IN(\
+                        SELECT collection_id FROM CollectionProduct\
+                        WHERE product_id = ?) AND product_id != ?\
+            );',[productId,productId]
+        );
+        return rows;
+    }
+    catch (error){
+        throw error;
+    }
+    finally {
+        conn.releaseConnection();
+    }
+}
+
 module.exports = {
     getProducts,
     getProductById,
     getProducsByLicence,
     getProductsMajorPriceRange,
-    getProductsMinorPriceRange
+    getProductsMinorPriceRange,
+    getRelated
 }
