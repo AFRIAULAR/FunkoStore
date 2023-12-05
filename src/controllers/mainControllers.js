@@ -9,7 +9,7 @@ module.exports ={
         try {
             // Llamas al método getItems del servicio para obtener los datos
             const items = await itemService.getItems(req.query); // Puedes pasar parámetros si es necesario
-            console.log(items);
+           // console.log(items);
             // Renderizas la vista 'home/index.ejs' y le pasas los datos obtenidos del servicio
             res.render('home/index.ejs');
         } catch (error) {

@@ -1,4 +1,4 @@
-*{
+input*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -425,5 +425,5 @@ border: 1px solid #1F1F1F;
     display: flex;
     padding: 20px 10px;
     gap: 30px 0px;
-    justify-content: flex-start;
-    align-items: stretch;}
+    justify-content: center;
+    align-items: center;}

@@ -6,9 +6,9 @@ const authControllers = require('../controllers/authControllers.js');
 //se establece que la ruta raiz para la autenticacion va a ser /auth
 router.get('/login', authControllers.login) ,   
 router.post('/login', authControllers.logining),
-router.get('/register', authControllers.register) ,
+router.get('/register', authControllers.register),
 router.post('/register', authControllers.registing),
 router.get('/logout', authControllers.logout),
 
 
-module.exports=router
+module.exports=router;

@@ -3,7 +3,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -24,13 +24,13 @@
             </picture>
             <ul class="navBar-ul">
                 <li class="navBar-li">
-                    <a href="./shop.html">VER TIENDA</a>
+                    <a href="/shop">VER TIENDA</a>
                 </li>
                 <li class="navBar-li">
-                    <a href="./listado.html">ADMIN</a>
+                    <a href="/admin">ADMIN</a>
                 </li>
                 <li class="navBar-li">
-                    <a href="../index.html">SALIR</a>
+                    <a href="/auth/logout">SALIR</a>
                 </li>
             </ul>
         </nav>
@@ -42,7 +42,7 @@
         </div>
         <ul>
             <li class="listado">LISTADO DE PRODUCTOS</li>
-            <li class="addlista">Agregar</li><img src="../assets/icons/plus-box.svg">
+            <li class="addlista">Agregar</li><a href="admin/create"><img src="..//assets/icons/mdi_plus-box.svg"></a>
         </ul>
         <table class="tablita">
             <thead>
@@ -61,8 +61,8 @@
                 <td class="filabody">STW001001</td>
                 <td class="filabody">Baby Yoda Blueball</td>
                 <td class="filabody">STAR WARS</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
+                <td class="filabody"><a href="admin/edit/:id"><img src="../assets/icons/edit_pencil.svg"></a></td>
+                <td class="filabody"><a href="#"><img src="../assets/icons/delete_trash.svg"></a></td>
             </tr>
             <tr>
                 <td class="filabody">2</td>
@@ -170,21 +170,21 @@
                 <div class="footer-li">
                     <ul class="navBar-ul-footer">
                         <li class="navBarFooter-li">
-                            <a href="./shop.html">SHOP</a>
+                            <a href="/shop">SHOP</a>
                         </li>
                         <li class="navBarFooter-li">
-                            <a href="./register.html">REGISTRARSE</a>
+                            <a href="/register">REGISTRARSE</a>
                         </li>
                         <li class="navBarFooter-li">
-                            <a href="./login.html">LOGIN</a>
+                            <a href="/login">LOGIN</a>
                         </li>
                         <li class="navBarFooter-li">
-                            <a href="./contact.html">CONTACTO</a>
+                            <a href="#">CONTACTO</a>
                         </li>
                     </ul>
                 </div>
                 <div class="footer-logo">
-                   <a href="../index.html"> <img src="../assets/branding/isotype.svg"></a>
+                   <a href="/home"> <img src="../assets/branding/isotype.svg"></a>
                 </div>
             </nav>
             <p class="footer-p">All rights reserved 2023 - Funkoshop @copyright</p>

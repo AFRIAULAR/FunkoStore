@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const mainController = require('../controllers/mainControllers.js');
 const storeControllers = require('../controllers/storeControllers.js');
 
 router.get('/', storeControllers.shop),/*solicitud de datos*/
