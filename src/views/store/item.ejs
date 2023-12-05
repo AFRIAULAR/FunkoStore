@@ -8,7 +8,7 @@
         <section class="card-product-container">
             <% producto.forEach(product => { %>
             <div class="card-product-item">
-                <div class="container">
+                <div class="container-sm w-75">
                     <div class="justify-content-center">
                         <div id="carouselExampleIndicators" class="carousel slide">
                             <div class="carousel-indicators">
@@ -34,17 +34,17 @@
                           </div>
                     </div>
                 </div>
-                <div class="item-product-content">
-                    <p class="item-product-license">Franquicia: <%= product.licence_name %></p>
-                    <h4 class="item-product-name"><%= product.product_name %></h4>
+                <div class="item-product-content m-3">
+                    <p class="item-product-license text-center mt-0">Franquicia: <%= product.licence_name %></p>
+                    <h3 class="item-product-name"><%= product.product_name %></h3>
                     <p class="item-product-description">
                         <%= product.product_description %>
                     </p>
                     <p class="item-product-price">$<%= product.product_price %></p>
-                    <div class="item-product-form">
-                        <form class="item-addToCart" method="post" action="">
-                            <input type="number" value="0" min="0" max="<%= product.dues %>" name="addCartItem" />
-                            <button type="submit" class="item-addToCartBtn">
+                    <div class="item-product-form justify-content-center">
+                        <form class="item-addToCart" method="post" action="add_to_cart/<%= product.product_id %>">
+                            <input name="quantity" class="form-control form-control" type="number" min=0 placeholder="Cantidad a comprar" aria-label=".form-control-sm example">
+                            <button type="submit" class="btn btn-primary item-addToCartBtn">
                                 Agregar al carrito
                             </button>
                         </form>
@@ -67,7 +67,7 @@
                                 <p class="shop-product-license"><%= product.licence_name %> </p>
                                 <h4 class="shop-product-name"><%= product.product_name %></h4>
                                 <p class="shop-product-price"><%= product.product_price %></p>
-                                <p class="shop-product-installments"><%= product.dues %> CUOTAS SIN INTERES</p>
+                                <p class="shop-product-installments my-2"><%= product.dues %> CUOTAS SIN INTERES</p>
                             </div>
                         </a>
                     <% }) %>

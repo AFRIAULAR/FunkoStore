@@ -74,7 +74,7 @@ INSERT INTO product (
 (10, 'Pokémon', 'Anime & Manga', 'Pikachu', 'Pikachu with its lightning bolt', 14.99, 0, 'F-1192', 'img/pikachu.jpg', 'img/pikachu-back.jpg'),
 (11, 'Pokémon', 'Anime & Manga', 'Charmander', 'Charmander with its tail flame', 14.99, 0, 'F-1193', 'img/charmander.jpg', 'img/charmander-back.jpg'),
 (12, 'Pokémon', 'Anime & Manga', 'Squirtle', 'Squirtle with its water spout', 14.99, 0, 'F-1194', 'img/squirtle.jpg','img/squirtle-back.jpg');
-
+-- agregar wolverine and cyclops
 -- Agrega las colecciones
 
 INSERT INTO collection (
@@ -92,7 +92,7 @@ INSERT INTO collection (
 (2, 'Marvel', 'The Avengers', 'Comics & Superheroes', 59.99, 0, 'C-1235', 'img/marvel-avengers-collection.jpg', 'img/marvel-avengers-collection-back.jpg'),
 (3, 'Star Wars', 'The Original Trilogy', 'Sci-Fi', 59.99, 0, 'C-1236', 'img/star-wars-original-trilogy.jpg', 'img/star-wars-original-trilogy-back.jpg'),
 (4, 'Pokémon', 'Kanto Starters', 'Anime & Manga', 44.97, 0, 'C-1237', 'img/pokemon-kanto-starters-collection.jpg', 'img/pokemon-kanto-starters-collection-back.jpg');
-
+--agregar xmen 
 
 -- Agrega los datos a CollectionProduct
 
@@ -109,3 +109,24 @@ INSERT INTO CollectionProduct (collection_id, product_id) VALUES
 (4, 10),
 (4, 11),
 (4, 12);
+--agregar a wolverine a los xmen y avengers
+--agregar a cyclopse a los xmen
+
+
+
+CREATE TABLE cart_detail(
+	cart_detail_id INT PRIMARY KEY,
+    product_id INT,
+    collection_id INT,
+    quantity INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES product(product_id),
+    FOREIGN KEY (collection_id) REFERENCES collection(collection_id)
+);
+
+CREATE TABLE cart(
+	cart_id INT  PRIMARY KEY,
+	cart_detail_id INT,
+    cart_owner INT,
+    FOREIGN KEY (cart_detail_id) REFERENCES cart_detail(cart_detail_id)
+);
+

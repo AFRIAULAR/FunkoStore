@@ -2,7 +2,7 @@ const { conn } = require('../config/conn');
 
 const getProducts = async () => { /*Obtengo todos los productos*/
     try {
-        const  [rows] = await conn.query('SELECT * FROM product;');
+        const [rows] = await conn.query('SELECT * FROM product;');
         return rows;
     } catch (error) {
         throw error;
@@ -13,9 +13,9 @@ const getProducts = async () => { /*Obtengo todos los productos*/
 
 const getProductById = async (productId) => {  /* */
     try {
-        const [row] = await conn.query('SELECT * FROM product WHERE product_id = ?;',[productId]);
+        const [row] = await conn.query('SELECT * FROM product WHERE product_id = ?;', [productId]);
         return row;
-    }catch (error){
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -24,9 +24,9 @@ const getProductById = async (productId) => {  /* */
 
 const getProducsByLicence = async (licence) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE licence_name = ?;',[licence]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE licence_name = ?;', [licence]);
         return rows;
-    }catch (error){
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -35,9 +35,9 @@ const getProducsByLicence = async (licence) => {
 
 const getProductsMinorPriceRange = async (priceRange) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE product_price <= ?;',[princeRange]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE product_price <= ?;', [princeRange]);
         return rows;
-    }catch (error){
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -46,9 +46,9 @@ const getProductsMinorPriceRange = async (priceRange) => {
 
 const getProductsMajorPriceRange = async (priceRange) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE product_price >= ?;',[princeRange]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE product_price >= ?;', [princeRange]);
         return rows;
-    }catch (error){
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -63,11 +63,11 @@ const getRelated = async (productId) => {
                     WHERE collection_id IN(\
                         SELECT collection_id FROM CollectionProduct\
                         WHERE product_id = ?) AND product_id != ?\
-            );',[productId,productId]
+            );', [productId, productId]
         );
         return rows;
     }
-    catch (error){
+    catch (error) {
         throw error;
     }
     finally {

@@ -1,5 +1,6 @@
 const express= require ('express')
 const productService = require('../services/productService');
+const cartService = require('../services/cartService');
 
 
 module.exports = {
@@ -18,7 +19,6 @@ module.exports = {
             const productId = req.params.id; // parámetro de la URL
             const product = await productService.getProductById(productId);
             const related = await productService.getRelated(productId);
-            console.log(product)
             // Renderizar la vista item.ejs y pasar el producto obtenido como datos
             res.render('store/item.ejs',{ producto : product,relacionados : related});
         } catch (error) {
@@ -26,7 +26,21 @@ module.exports = {
             res.status(500).send('Error al obtener el producto');
         }
     },
-    cartItem: (req,res) => res.send ('Pagina de agregar item'), /*envio de datos*/
+    cartItem: (req,res) => {
+        try {
+            const productId = req.params.id;
+            const quantity = req.body.quantity;
+            cartService.addItemCart(productId,quantity);
+
+            const referer = req.headers.referer || '/'; 
+            res.redirect(referer);
+
+        }
+        catch (error){
+            console.error('Error al añadir el producto al carro.',error);
+            res.status(500).send('Error al añadir el producto al carro.');
+        }
+    },
     cart: (req,res) => res.send ('Pagina de carrito de compras'), /*solicitud del total? del carrito*/
     cartPay: (req,res) => res.send ('Pagina de carrito de compras'), /*envio de solicitud? de pago*/
 }
