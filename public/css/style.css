@@ -35,6 +35,7 @@ li a{
 ul {
     display: flex;
     align-items: flex-end;
+    white-space: nowrap;
 }
 
 .navBar-li{
@@ -223,9 +224,10 @@ th{
 /*ESTILO DE LISTADO*/
 
 .searchbar {
-    padding-left: 120px; 
+    padding-left: 60px; 
     padding-top: 30px;
     padding-bottom: 30px;
+    gap: 10px;
     display: flex;
     align-items: center;
     border-radius: 6px;
@@ -234,11 +236,20 @@ th{
 
 .searchinput {
     border-radius: 6px;
+    border: 2px solid #30343F;
     outline: none;
     width: 500px;
     height: 44.3px;
     flex-shrink: 0;
        
+}
+.searchinput::placeholder {
+    color: #B9B9B9;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
 
 .searchbutton {
@@ -274,11 +285,10 @@ th{
 
 .tablita {
     width: 1400px;
-    height: 928.95px;
+    height: 600px;
     top: 260.28px;
     background: #FFF;
-    margin-left: 145px;
-    
+    margin-left: 60px;
    
 }
 
@@ -358,6 +368,7 @@ th{
 }
 .listado2{
     color: #1F1F1F;
+    /*display: flex;*/
     text-align: center;
     font-family: Raleway;
     font-size: 42px;
@@ -368,6 +379,14 @@ th{
 }
 .text-center{
     margin-top: 30px;
+    margin: 30px 60px ;
+    gap: 30px;
+    /*display: flex;*/
+    justify-content: flex-start;
+    align-content: flex-start;
+    /*width: 1000px;
+    height: 900px;*/
+
 }
 
 label{
@@ -398,12 +417,15 @@ label{
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: 1.28px;
+    /*letter-spacing: 1.28px;*/
 }
 .checkbox{
     border-style: none;
     border-radius: 6px;
     border: 2px solid #30343f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .mini-img {
     width: 150px;
@@ -418,12 +440,26 @@ label{
 }
 textarea{
     border-radius: 4px;
-border: 1px solid #1F1F1F;
+    border: 1px solid #1F1F1F;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .container-options{
     display: flex;
     padding: 20px 10px;
-    gap: 30px 0px;
-    justify-content: center;
-    align-items: center;}
+    gap: 30px 20px;
+    flex-grow: 1;
+    margin-right: 5px;
+   /* justify-content: center;
+    align-items: center;
+    text-align: center;*/}
+
+    .text-center2{
+        margin: 10px ;
+        gap: 30px;
+        width: 100%;
+        height: 100%;
+    }
+    
+      
