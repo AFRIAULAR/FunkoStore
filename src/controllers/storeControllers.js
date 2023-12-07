@@ -26,11 +26,11 @@ module.exports = {
             res.status(500).send('Error al obtener el producto');
         }
     },
-    cartItem: (req,res) => {
+    cartItem: async (req,res) => {
         try {
             const productId = req.params.id;
             const quantity = req.body.quantity;
-            cartService.addItemCart(productId,quantity);
+            await cartService.addItemCart(productId,quantity);
 
             const referer = req.headers.referer || '/'; 
             res.redirect(referer);
@@ -41,6 +41,13 @@ module.exports = {
             res.status(500).send('Error al añadir el producto al carro.');
         }
     },
-    cart: (req,res) => res.send ('Pagina de carrito de compras'), /*solicitud del total? del carrito*/
+    cart: async (req,res) => {
+        try {
+            res.render('store/cart')
+        } catch (error) {
+            console.error('Error al obtener datos del carrito:', error);
+            res.status(500).send('Error al obtener el producto.',error);
+        }
+    }, /*solicitud del total? del carrito*/
     cartPay: (req,res) => res.send ('Pagina de carrito de compras'), /*envio de solicitud? de pago*/
 }
