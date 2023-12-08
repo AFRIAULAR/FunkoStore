@@ -27,6 +27,10 @@ const addCollection = async (id, quantity) => {
     }
 };
 
+const getItems = async (id) => {
+    
+};
+
 module.exports = {
     addProduct,
     addCollection
