@@ -6,7 +6,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'funko_store',
+    database: 'funko_test',
     port: 3306,
     waitForConnections: true,
     connectionLimit: 10,

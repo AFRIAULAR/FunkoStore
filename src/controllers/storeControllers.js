@@ -16,16 +16,21 @@ module.exports = {
     },
     item: async (req, res) => {
         try {
-            const productId = req.params.id; // parámetro de la URL
+            const productId = req.params.id;
             const product = await productService.getProductById(productId);
+            const licence = await productService.getLicenceByProductId(productId);
             const related = await productService.getRelated(productId);
-            // Renderizar la vista item.ejs y pasar el producto obtenido como datos
-            res.render('store/item.ejs',{ producto : product,relacionados : related});
+            if (!licence) {
+                console.error('Licencia no encontrada para el producto:', productId);
+            }
+    
+            res.render('store/item.ejs', { producto: product, relacionados: related, licence: licence });
         } catch (error) {
             console.error('Error al obtener el producto:', error);
             res.status(500).send('Error al obtener el producto');
         }
     },
+    
     cartItem: (req,res) => {
         try {
             const productId = req.params.id;

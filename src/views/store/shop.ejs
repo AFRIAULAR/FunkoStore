@@ -69,12 +69,12 @@
                     <% products.forEach(product => { %>
                         <a href="/shop/item/<%= product.product_id %>" class="card a-card m-3" style="width: 18rem;">
                             <div style="width: 100%; height: 200px; overflow: hidden;">
-                                <img src="<%= product.img_front %>" class="card-img-top img-fluid" alt="..." style="width: 100%; height: 100%; object-fit: contain;">
+                                <img src="<%= product.image_front %>" class="card-img-top img-fluid" alt="..." style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                             <div class="card-body shop-product-description">
                                 <p class="shop-product-license"><%= product.licence_name %> </p>
                                 <h4 class="shop-product-name"><%= product.product_name %></h4>
-                                <p class="shop-product-price"><%= product.product_price %></p>
+                                <p class="shop-product-price"><%= product.price %></p>
                                 <p class="shop-product-installments"><%= product.dues %> CUOTAS SIN INTERES</p>
                             </div>
                         </a>

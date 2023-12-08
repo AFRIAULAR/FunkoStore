@@ -22,9 +22,9 @@ const getProductById = async (productId) => {  /* */
     }
 };
 
-const getProducsByLicence = async (licence) => {
+const getProductsByLicence = async (licence) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE licence_name = ?;', [licence]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE licence_id = ?;', [licence]);
         return rows;
     } catch (error) {
         throw error;
@@ -35,7 +35,7 @@ const getProducsByLicence = async (licence) => {
 
 const getProductsMinorPriceRange = async (priceRange) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE product_price <= ?;', [princeRange]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE price <= ?;', [princeRange]);
         return rows;
     } catch (error) {
         throw error;
@@ -46,7 +46,28 @@ const getProductsMinorPriceRange = async (priceRange) => {
 
 const getProductsMajorPriceRange = async (priceRange) => {
     try {
-        const [rows] = await conn.query('SELECT * FROM product WHERE product_price >= ?;', [princeRange]);
+        const [rows] = await conn.query('SELECT * FROM product WHERE price >= ?;', [princeRange]);
+        return rows;
+    } catch (error) {
+        throw error;
+    } finally {
+        conn.releaseConnection();
+    }
+}
+  // 'SELECT * FROM product WHERE product_id IN(\ 
+            //    SELECT DISTINCT product_id FROM Product \
+            //        WHERE licence_id IN(\
+            //            SELECT license_id FROM licence\
+            //            WHERE product_id = ?) AND product_id != ?\
+            //            
+const getRelated = async (productId) => {
+    try {
+        const [rows] = await conn.query(`
+        SELECT product.*, category.category_name, licence.licence_name
+        FROM (product
+        LEFT JOIN category ON product.category_id = category.category_id)
+        LEFT JOIN licence ON product.licence_id = licence.licence_id
+        WHERE product.product_id != ?;`, [productId]);     
         return rows;
     } catch (error) {
         throw error;
@@ -55,31 +76,23 @@ const getProductsMajorPriceRange = async (priceRange) => {
     }
 }
 
-const getRelated = async (productId) => {
+const getLicenceByProductId = async (productId) => {
     try {
-        const [rows] = await conn.query(
-            'SELECT * FROM product WHERE product_id IN(\
-                SELECT DISTINCT product_id FROM CollectionProduct \
-                    WHERE collection_id IN(\
-                        SELECT collection_id FROM CollectionProduct\
-                        WHERE product_id = ?) AND product_id != ?\
-            );', [productId, productId]
-        );
-        return rows;
-    }
-    catch (error) {
+        const [row] = await conn.query('SELECT licence.* FROM product INNER JOIN licence ON product.licence_id = licence.licence_id WHERE product.product_id = ?;', [productId]);
+        return row;
+    } catch (error) {
         throw error;
-    }
-    finally {
+    } finally {
         conn.releaseConnection();
     }
-}
+};
 
 module.exports = {
     getProducts,
     getProductById,
-    getProducsByLicence,
+    getProductsByLicence,
     getProductsMajorPriceRange,
     getProductsMinorPriceRange,
-    getRelated
-}
+    getRelated,
+    getLicenceByProductId,
+} 
