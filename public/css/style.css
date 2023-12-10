@@ -427,3 +427,20 @@ border: 1px solid #1F1F1F;
     gap: 30px 0px;
     justify-content: flex-start;
     align-items: stretch;}
+
+    .img-responsive {
+        max-width: 100%; /* La imagen no excederá el ancho del contenedor */
+        height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
+    }
+
+    .item-count-container {
+        display: inline-block;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+    
+    .item-count-badge {
+        font-weight: bold;
+        color: #333;
+    }

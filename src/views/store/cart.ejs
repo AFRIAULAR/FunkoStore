@@ -9,132 +9,118 @@
                 <h3>CARRITO DE COMPRAS</h3>
             </div>
         </div>
-        <div class="d-flex justify-content-center">
-            <div class="w-75 mx-auto">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Detalle de Producto</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Total</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="tr-detail">
-                            <td class="td-title-product">
-                                <img src="../assets/star-wars/baby-yoda-1.webp" class="td-img">
-                                <div>
-                                    <p class="p-td-nameProduct">BABY YODA BLUEBALL</p>
-                                    <p class="p-td-license">Star wars</p>
-                                    <div class="input-group mb-3">
-                                        <span class="">$</span>
-                                        <span class="">
-                                            <p class="p-td-price">1799.99</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="td-quant">
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm cart-item-count custom-input"
-                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
-                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
-                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
-                                </div>
-                            </td>
-                            <td class="td-totalPrice">
-                                <div class="input-group mb-3">
-                                    <span class="">$</span>
-                                    <span class="">
-                                        <p class="cart-item-price">1799.99</p>
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="td-delete">
-                                <button type="button" class="btn-close cart-item-delete delete-button"
-                                    aria-label="Close"></button>
-                            </td>
-                        </tr>
-                        <tr class="tr-detail">
-                            <td class="td-title-product">
-                                <img src="../assets/pokemon/pidgeotto-1.webp" class="td-img">
-                                <div>
-                                    <p class="p-td-nameProduct">PIDGEOTTO</p>
-                                    <p class="p-td-license">Pokemon</p>
-                                    <div class="input-group mb-3">
-                                        <span class="">$</span>
-                                        <span class="">
-                                            <p class="p-td-price">1799.99</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="td-quant col-2">
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm cart-item-count custom-input"
-                                        inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
-                                    <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
-                                    <button class="btn btn-secondary disminuir" id="disminuir">-</button>
-                                </div>
-                            </td>
-                            <td class="td-totalPrice">
-                                <div class="input-group mb-3">
-                                    <span class="">$</span>
-                                    <span class="">
-                                        <p class="cart-item-price">1799.99</p>
-                                    </span>
-                                </div>
-                            </td>
-                            <td class="td-delete">
-                                <button type="button" class="btn-close cart-item-delete delete-button"
-                                    aria-label="Close"></button>
-                            </td>
-                        </tr>
-                </table>
-            </div>
-        </div>
-        <section class=""> <!-- SAQUE EL NOMBRE DE LA CLASE-->
-            <div class="d-flex justify-content-center align-items-center my-3">
-                <div class="text-center">
-                    <h3>Resumen de Compra</h3>
+        <div class="container">
+            <% if (items && items.length > 0) { %>
+                <div class="d-flex justify-content-center">
+                    <div class="w-75 mx-auto">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Detalle de Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+    
+                                <% items.forEach(item => { %>
+                                <tr class="tr-detail">
+                                    <td class="td-title-product">
+                                        <img src="<%= item.img_front%>" class="img-responsive" style="width: 100%; height: 100%; object-fit: contain;">
+                                        <div class="container justify-content-center">
+                                            <p class="p-td-nameProduct">Nombre del producto: <%= item.product_name %></p>
+                                            <p class="p-td-license">Franquicia: <%= item.licence_name %></p>
+                                            <p class="p-td-license"><%= item.product_description %></p>
+                                            <p class="p-td-license">Codigo Identificador: <%= item.product_sku %></p>
+                                            <div class="input-group mb-3">
+                                                <span class="">Precio: $</span>
+                                                <span class="">
+                                                    <p class="p-td-price"><%= item.product_price %></p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="td-quant">
+                                        <div class="item-count-container align-items-center">
+                                            <span class="item-count-badge "><%= item.quantity %></span> <!-- Aquí se mostrará la cantidad de ítems -->
+                                        </div>
+                                        <!--
+                                        <div class="input-group">
+                                            <input class="form-control form-control-sm cart-item-count custom-input"
+                                                inputmode="none" type="number" value="1" min="1" max="10" name="cantidad">
+                                            <button class="btn custom-btn-aumentar aumentar" id="aumentar">+</button>
+                                            <button class="btn btn-secondary disminuir" id="disminuir">-</button>
+                                        </div>
+                                        -->
+                                    </td>
+                                    <td class="td-totalPrice">
+                                        <div class="input-group mb-3">
+                                            <span class="">$</span>
+                                            <span class="">
+                                                <p class="cart-item-price"><%= item.total_price %></p>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="td-delete">
+                                        <form id="deleteForm" action="cart/remove_item/<%= item.detail_id %>" method="POST">
+                                            <button type="submit" class="btn-close cart-item-delete delete-button btn-lg" aria-label="Close"></button>
+                                        </form>
+                                    </td>                      
+                                </tr>
+                                <% }) %>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center ">
-                <div class="w-100 d-flex justify-content-center">
-                    <div class="">
-                        <div class="resume-quant">
-                            <span class="resume-cols">Cantidad de elementos</span>
-                            <span class="resume-cols mx-5">
-                                <p id="quant">2</p>
-                            </span>
-                        </div>
-                        <div class="resume-quant">
-                            <span class="resume-cols">Subtotal</span>
-                            <span class="">$</span>
-                            <span class="mb-2">
-                                <p id="subtotal">5399.97</p>
-                            </span>
-                        </div>
-                        <div class="resume-quant">
-                            <span class="resume-cols">ENVIO</span>
-                            <span class="">$</span>
-                            <span class="mb-2">
-                                <p id="envio">10.00</p>
-                            </span>
-                        </div>
-                        <hr class="hr-colored">
-                        <div class="resume-quant">
-                            <span class="resume-cols">TOTAL</span>
-                            <span class="">$</span>
-                            <span class="mb-2">
-                                <p id="total">5399.97</p>
-                            </span>
+                <section class=""> <!-- SAQUE EL NOMBRE DE LA CLASE-->
+                    <div class="d-flex justify-content-center align-items-center my-3">
+                        <div class="text-center">
+                            <h3>Resumen de Compra</h3>
                         </div>
                     </div>
-                </div> 
-            </div>
-        </section>
+                    <% info.forEach(data => { %>
+                    <div class="d-flex justify-content-center ">
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="">
+                                <div class="resume-quant">
+                                    <span class="resume-cols">Cantidad de productos</span>
+                                    <span class="resume-cols mx-5">
+                                        <p id="quant"><%= data.cant_items %></p>
+                                    </span>
+                                </div>
+                                <div class="resume-quant">
+                                    <span class="resume-cols">Subtotal</span>
+                                    <span class="">$</span>
+                                    <span class="mb-2">
+                                        <p id="subtotal"><%= data.Total %></p>
+                                    </span>
+                                </div>
+                                <div class="resume-quant">
+                                    <span class="resume-cols">Descuentos</span>
+                                    <span class="">$</span>
+                                    <span class="mb-2">
+                                        <p id="envio">0.00</p>
+                                    </span>
+                                </div>
+                                <hr class="hr-colored">
+                                <div class="resume-quant">
+                                    <span class="resume-cols">TOTAL</span>
+                                    <span class="">$</span>
+                                    <span class="mb-2">
+                                        <p id="total"><%= data.Total %></p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    <% }) %>
+                </section>
+            <% } else { %>
+                <p class="text-center">No hay elementos en el carrito.</p>
+            <% } %>
+            
+            
+        </div>
     </main>
     <%- include ('../partials/footer') %>
 </body>
