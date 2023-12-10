@@ -10,37 +10,36 @@
     <div id="text3"><h3>Completa el formulario para ser parte del mundo de los Funkos</h3></div>
 </div>
     <div class="product-card-container">
-        <form action="" class="form">
+        <form class="form" action='/register' method="POST" enctype="application/x-www-form-urlencoded">
         <div class="input-container">
             <label for="name" value="nombre">Nombre:</label>
-        <input type="text" placeholder="John" id="name" class="input-data" autocomplete="given-name">
+        <input type="text" placeholder="John" id="name" class="input-data" name="name">
         </div>
         <br>
         <div class="input-container">
-            <label for="last-name">Apellido:</label>
-        <input type="text" placeholder="Doe" id="last-name" class="input-data">
+            <label for="lastname">Apellido:</label>
+        <input type="text" placeholder="Doe" id="lastname" class="input-data" name="lastname">
        </div>
         <br>
         <div class="input-container">
-            <label for="Email">Email:</label>
-        <input type="email" placeholder="JohnDoe@correo.com" id="Email" class="input-data" autocomplete="given-name">
+            <label for="email">Email:</label>
+        <input type="email" placeholder="JohnDoe@correo.com" id="email" class="input-data" name="email">
         </div>
         <br>
         <div class="input-container">
             <label for="password">Contraseña:</label>
-        <input type="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" id="password" class="input-data">
+        <input type="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" id="password" class="input-data" name="password">
         </div>
         <br>
         <div class="input-container">
             <label for="repassword">Repita contraseña:</label>
-        <input type="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" id="repassword" class="input-data">
+        <input type="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" id="repassword" class="input-data" name="repassword">
         </div>
         <br>
-        <!--input type="submit" value="Registrarse"-->
-        <button class="cart-button3">Registrar</button>
+        <button class="cart-button3" type="submit" value="ingresar">Registrar</button>
         <input type="checkbox" name="" id="check" class="checkbox">
-        <span id="">Acepto <a href="#" class="shop-product-installments">Terminos y condiciones</a>
-        </span> 
+        <label for="">Acepto <a href="#" class="shop-product-installments">Terminos y condiciones</a>
+        </label> 
         
        </form>
     </div>
