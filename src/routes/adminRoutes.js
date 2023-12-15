@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-/*const mainControllers = require('../controllers/mainControllers.js')*/
 const adminControllers = require('../controllers/adminControllers.js');
 
 router.get('/', adminControllers.admin); /*solicitud de datos*/

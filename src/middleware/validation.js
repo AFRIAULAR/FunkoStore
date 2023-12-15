@@ -8,4 +8,6 @@ const validationInput = (req, res, next) => {
 	next()
 }
 
-module.exports = validationInput
+module.exports = {
+	validationInput,
+}

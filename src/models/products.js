@@ -9,7 +9,7 @@ const getProducts = async () => { /*Obtengo todos los productos*/
     } finally {
         conn.releaseConnection();
     }
-}
+};
 
 const getProductById = async (productId) => {  /* */
     try {
@@ -31,7 +31,7 @@ const getProductsByLicence = async (licence) => {
     } finally {
         conn.releaseConnection();
     }
-}
+};
 
 const getProductsMinorPriceRange = async (priceRange) => {
     try {
@@ -42,7 +42,7 @@ const getProductsMinorPriceRange = async (priceRange) => {
     } finally {
         conn.releaseConnection();
     }
-}
+};
 
 const getProductsMajorPriceRange = async (priceRange) => {
     try {
@@ -53,28 +53,34 @@ const getProductsMajorPriceRange = async (priceRange) => {
     } finally {
         conn.releaseConnection();
     }
-}
-  // 'SELECT * FROM product WHERE product_id IN(\ 
-            //    SELECT DISTINCT product_id FROM Product \
-            //        WHERE licence_id IN(\
-            //            SELECT license_id FROM licence\
-            //            WHERE product_id = ?) AND product_id != ?\
-            //            
+};
+ 
+
 const getRelated = async (productId) => {
     try {
-        const [rows] = await conn.query(`
-        SELECT product.*, category.category_name, licence.licence_name
-        FROM (product
-        LEFT JOIN category ON product.category_id = category.category_id)
-        LEFT JOIN licence ON product.licence_id = licence.licence_id
-        WHERE product.product_id != ?;`, [productId]);     
-        return rows;
+        const [row] = await conn.query(`
+            SELECT 
+                p.product_id,
+                p.product_name,
+                p.product_price,
+                p.image_front,
+                l.licence_name
+            FROM product p
+            INNER JOIN licence l ON p.licence_id = l.licence_id
+            WHERE p.licence_id = (
+                SELECT licence_id FROM product WHERE product_id = ?
+            )
+            AND p.product_id != ?
+            LIMIT 3;
+        `, [productId, productId]);
+
+        return row;
     } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
     }
-}
+};
 
 const getLicenceByProductId = async (productId) => {
     try {

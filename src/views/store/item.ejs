@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
     <%- include ('../partials/head') %>
     <body> 
@@ -65,6 +65,94 @@
                             </div>
                             <div class="card-body shop-product-description">
                                 <p class="shop-product-license"><%= licence && licence.licence_name %> </p>
+                                <h4 class="shop-product-name"><%= product.product_name %></h4>
+                                <p class="shop-product-price"><%= product.price %></p>
+                                <p class="shop-product-installments my-2"><%= product.dues %> CUOTAS SIN INTERES</p>
+                            </div>
+                        </a>
+                    <% }) %>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .card:hover {
+            transform: scale(1.05); /* Escala del 5% al pasar el cursor */
+            transition: transform 0.3s ease; /* Efecto de transición suave */
+        }
+    </style>
+    <%- include ('../partials/footer') %>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+<body>
+    <%- include ('../partials/header') %>
+    <main>
+        
+        <section class="card-product-container">
+            <% producto.forEach(product => { %>
+            <div class="card-product-item">
+                <div class="container-sm w-75">
+                    <div class="justify-content-center">
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            </div>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="<%= product.image_front %>" class="d-block w-50 h-50 mx-auto" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="<%= product.image_back %>" class="d-block w-50 h-50 mx-auto" alt="...">
+                              </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="visually-hidden">Next</span>
+                            </button>
+                          </div>
+                    </div>
+                </div>
+                <div class="item-product-content m-3">
+                    <p class="item-product-license text-center mt-0">Franquicia: <%= licence[0].licence_name %></p>
+                    <h3 class="item-product-name"><%= product.product_name %></h3>
+                    <p class="item-product-description">
+                        <%= product.product_description %>
+                    </p>
+                    <p class="item-product-price">$<%= product.price %></p>
+                    <div class="item-product-form justify-content-center">
+                        <form class="item-addToCart" method="post" action="add_to_cart/<%= product.product_id %>">
+                            <input name="quantity" class="checkbox form-control" type="number" min=0 placeholder="Cantidad a comprar" aria-label=".form-control-sm example">
+                            <button type="submit" class="cart-button3">
+                                Agregar al carrito
+                            </button>
+                        </form>
+                    </div>
+                    <a href="#" class="item-product-installments">Ver métodos de pago - <%= product.dues %> CUOTAS SIN INTERES</a>
+                </div>
+            </div>
+            <% }) %>
+        </section>
+        <section class="products-rel-container mt-3">
+            <h3 class="text-center">PRODUCTOS RELACIONADOS</h3>
+            <div class="row justify-content-center">
+                <div class="row row-cols-7 justify-content-center">
+                    <% relacionados.forEach(product => { %>
+                        <a href="/shop/item/<%= product.product_id %>" class="card a-card m-3" style="width: 18rem;">
+                            <div style="width: 100%; height: 200px; overflow: hidden;">
+                                <img src="<%= product.image_front %>" class="card-img-top img-fluid" alt="..." style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                            <div class="card-body shop-product-description">
+                                <p class="shop-product-license"><%= product.licence_name %> </p>
                                 <h4 class="shop-product-name"><%= product.product_name %></h4>
                                 <p class="shop-product-price"><%= product.price %></p>
                                 <p class="shop-product-installments my-2"><%= product.dues %> CUOTAS SIN INTERES</p>

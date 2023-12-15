@@ -42,18 +42,19 @@
     <div class="text-center2">    
       <h1 class="listado2">INGRESAR A MI CUENTA</h1>
     </div>
-        <div class="product-card-container"><form action="" method="" class="form">
+        <div class="product-card-container">
+            <form action="/auth/login" method="POST" class="form" enctype="application/x-www-form-urlencoded">
             <div class="input-container">   
             <label for="email">Email:</label>
-            <input type="email" placeholder="JohnDoe@correo.com" class="input-data" id="email"></div>
+            <input type="email" name="email" placeholder="JohnDoe@correo.com" class="input-data" id="email"></div>
             <br>
             <div class="input-container">
             <label for="password">Contraseña:</label>
-            <input type="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" class="input-data" id="password"></div>
+            <input type="password" name="password" placeholder="⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤" class="input-data" id="password" ></div>
             <br>
     
             <!--input type="submit" value="Enviar"-->
-            <button class="cart-button3">Enviar</button>
+            <button class="cart-button3" type="submit">Enviar</button>
              <input type="checkbox" name="" id="">
              <span>Recordarme</span>
             </form>

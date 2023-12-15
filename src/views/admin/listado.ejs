@@ -57,110 +57,18 @@
                 </tr>
             </thead>
         <tbody>
-            <tr>
-                <td class="filabody">1</td>
-                <td class="filabody">STW001001</td>
-                <td class="filabody">Baby Yoda Blueball</td>
-                <td class="filabody">STAR WARS</td>
-                <td class="filabody"><a href="admin/edit/:id"><img src="../assets/icons/edit_pencil.svg"></a></td>
-                <td class="filabody"><a href="#"><img src="../assets/icons/delete_trash.svg"></a></td>
-            </tr>
-            <tr>
-                <td class="filabody">2</td>
-                <td class="filabody">STW001002</td>
-                <td class="filabody">Boba Fett Fighter</td>
-                <td class="filabody">STAR WARS</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">3</td>
-                <td class="filabody">STW001003</td>
-                <td class="filabody">Luke Skywalker & Grogu</td>
-                <td class="filabody">STAR WARS</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">4</td>
-                <td class="filabody">STW001004</td>
-                <td class="filabody">Stormtrooper Lightsaber</td>
-                <td class="filabody">STAR WARS</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">5</td>
-                <td class="filabody">PKM001001</td>
-                <td class="filabody">Charmander Smiley</td>
-                <td class="filabody">STAR WARS</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">6</td>
-                <td class="filabody">PKM001002</td>
-                <td class="filabody">Dragonite Hi!</td>
-                <td class="filabody">POKEMON</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">7</td>
-                <td class="filabody">PKM001003</td>
-                <td class="filabody">Pidgeotto Flying</td>
-                <td class="filabody">POKEMON</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">8</td>
-                <td class="filabody">PKM001004</td>
-                <td class="filabody">Pikachu Smiley</td>
-                <td class="filabody">POKEMON</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">9</td>
-                <td class="filabody">PKM001005</td>
-                <td class="filabody">Vulpix Fancy</td>
-                <td class="filabody">POKEMON</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">10</td>
-                <td class="filabody">HPT001001</td>
-                <td class="filabody">Harry Potter & Hegwid</td>
-                <td class="filabody">HARRY POTTER</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">11</td>
-                <td class="filabody">HPT001002</td>
-                <td class="filabody">Herminione Ball Dress</td>
-                <td class="filabody">HARRY POTTER</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">12</td>
-                <td class="filabody">HPT001003</td>
-                <td class="filabody">Luna Lovegood Lion Mask</td>
-                <td class="filabody">HARRY POTTER</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
-            <tr>
-                <td class="filabody">13</td>
-                <td class="filabody">HPT001004</td>
-                <td class="filabody">Snape Patronus</td>
-                <td class="filabody">HARRY POTTER</td>
-                <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-            </tr>
+            <% product.forEach(product => { %>
+                <tr>
+                    <td class="filabody"><%= product.product_id %></td>
+                    <td class="filabody"><%= product.sku %></td>
+                    <td class="filabody"><%= product.product_name %></td>
+                    <td class="filabody"><%= product.licence_name %></td>
+                    <td class="filabody"><a href="/admin/edit/<%= product.product_id %>"><img src="../assets/icons/edit_pencil.svg"></a></td>
+                    <td class="filabody"><a href="/admin/delete/<%= product.product_id %>?_method=DELETE"><img src="../assets/icons/delete_trash.svg"></a>
+                    </td>
+                    </tr>
+                  <% }); %>
+           
         </tbody>
         </table>
         </div>

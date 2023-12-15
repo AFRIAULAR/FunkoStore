@@ -2,7 +2,7 @@ require('dotenv').config();
 // app principal
 const express = require('express');
 const app = express();
-//const session = require('express-session')
+const session = require('express-session')
 const { body, validationResult } = require('express-validator');
 const { initSession } = require('./src/utils/sesion');
 const expressValidator = require('express-validator');
@@ -21,6 +21,13 @@ const port = process.env.PORT;
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'./src/views'));
 
+app.use(session({
+  secret: 'S3cr3t01H@sh',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Puedes ajustar esto según tus necesidades
+}));
+
 app.use(initSession());
 
 app.use((req, res, next) => {
@@ -38,31 +45,15 @@ app.use('/', mainRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 app.use('/shop', storeRoutes);
-/*app.post('/formulario', [
-    // Definir reglas de validación con express-validator
-    body('nombre').notEmpty().isString(),
-    body('Apellido').notEmpty().isString(),
-    body('email').notEmpty().isEmail(),
-    body('password').isInt({ min: 1, max: 10 }),
-  ], (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).send('Error de validación: ' + JSON.stringify(errors.array()));
-    }
-  
-    // Procesar la solicitud si los datos son válidos
-    const { nombre, apellido, email, password } = req.body;
-    res.send(`Hola ${nombre}, tu correo es ${email} y tienes ${edad} años.`);
-  });
-  
-  // Servir un formulario HTML
-  app.get('/formulario', (req, res) => {
-    res.sendFile(__dirname + '/formulario.html');
-  });*/
 
-// middleware para manejar error 404
-app.use((req, res, next) => {
-    console.log (`Recurso no encontrado: ${req.url}`);
+app.use((err, req, res, next) => {
+  console.error('Error al obtener información de productos:', err);
+  res.status(500).send('Error interno del servidor');
+});
+
+app.use((err, req, res, next) => {
+   // console.log (`Recurso no encontrado: ${req.url}`);
+    console.error('Recurso no encontrado:', err);
     res.status(404).send('Recurso no encontrado');  
 });
 

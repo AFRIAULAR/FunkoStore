@@ -2,14 +2,11 @@ const express = require('express');
 const itemService = require('../services/itemService')
 
 module.exports ={
-    /*home: (req, res) =>{
-        res.render('home/index')
-    },*/
     home: async (req, res) => {
         try {
             // Llamas al método getItems del servicio para obtener los datos
             const items = await itemService.getItems(req.query); // Puedes pasar parámetros si es necesario
-           // console.log(items);
+           //console.log(items);
             // Renderizas la vista 'home/index.ejs' y le pasas los datos obtenidos del servicio
             res.render('home/index.ejs');
         } catch (error) {

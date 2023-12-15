@@ -1,9 +1,16 @@
 const express = require('express');
+const productService = require('../services/productService');
 
 module.exports = {
-admin: (req,res) => {
-    res.render('admin/listado.ejs')
-},
+admin: async (req, res) => {
+        try {
+            const product = await productService.getItems(); // Asegúrate de tener datos aquí
+            res.render('admin/listado.ejs', { product: product });
+        } catch (error) {
+            console.error('Error al obtener el producto:', error);
+            res.status(500).send('Error al obtener el producto');
+        }
+      },
 create:(req,res) => {
     res.render('admin/create.ejs')
 },
