@@ -7,15 +7,27 @@ const adminRoutes = require('./src/routes/adminRoutes.js');
 const authRoutes = require('./src/routes/authRoutes.js');
 const storeRoutes = require('./src/routes/storeRoutes.js');
 const path = require('path');
+
+const session = require('express-session')
+
+
 //override para habilitar metodos put y delete
 const methodOverride = require('method-override');
 
 const port = process.env.PORT;
 
 //Configuracion de mototr de plantilla
-app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'./src/views'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './src/views'));
 
+app.use(session({
+    secret: 'S3cr3t01H@sh',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // Puedes ajustar esto según tus necesidades
+}));
+
+/*app.use(initSession());*/
 
 
 app.use(methodOverride('__method'));
