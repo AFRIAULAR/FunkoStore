@@ -1,6 +1,6 @@
 const express = require('express');
 const userService = require('../services/userService')
-const validate = require('../middleware/validation');
+const validate = require('../middleware/validation')
 const bcrypt = require('bcrypt')
 
 
@@ -15,14 +15,10 @@ module.exports ={
                 password : req.body.password
             }
             const user_info = await userService.getUserByEmail(data.email);
-            if (user_info[0].length === 0) {
-                return null;
+            if (user_info[0].length === 0 && !validate.validatePassword(data.password,user_info[0][0].password)) {
+                res.render('login/login.ejs', {msg_error: "email o password incorrecto."});
             }
             
-            if (!validate.validatePassword(data.password,user_info[0][0].password)){
-                console.log("enviar error de pass");
-                return null;
-            }
             /*
             if (! await validate.validatePassword(password, data.password)) {
                 console.log("el password esta mal");
@@ -59,5 +55,10 @@ module.exports ={
             res.status(500).send("Error al registrar del usuario");
         }
     },
-    logout: (req,res) => res.send ('Salida de la Pagina de shop'),
+    logout: (req,res) =>{
+        console.log('ON DESTROY SESSION = ',req.session.id)
+
+        req.session.destroy();
+        res.send("logout success!");
+    },
 }
