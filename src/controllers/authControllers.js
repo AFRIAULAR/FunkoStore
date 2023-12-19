@@ -15,15 +15,9 @@ module.exports ={
                 password : req.body.password
             }
             const user_info = await userService.getUserByEmail(data.email);
-            if (user_info[0].length === 0 && !validate.validatePassword(data.password,user_info[0][0].password)) {
-                res.render('login/login.ejs', {msg_error: "email o password incorrecto."});
+            if (user_info[0].length === 0 || !validate.validatePassword(data.password,user_info[0][0].password)) {
+                return res.render('login/login.ejs', {msg_error: "Email o Contraseña incorrectos."});
             }
-            
-            /*
-            if (! await validate.validatePassword(password, data.password)) {
-                console.log("el password esta mal");
-            }
-            */
 
             req.session.user = {
                 userId: user_info[0][0].user_id,
@@ -31,6 +25,7 @@ module.exports ={
                 email: user_info[0][0].email
             };
 
+            console.log(req.session); // Agrega este registro
             res.redirect('/home');
         } catch(error) {
             console.log('Error al procesar el incio de sesion');
@@ -38,7 +33,7 @@ module.exports ={
         }
     },
     register: (req,res) => {
-        res.render('login/register.ejs');
+        res.render('login/register');
     },
     registing: async (req,res) =>{
         try {
@@ -46,10 +41,21 @@ module.exports ={
                 name: req.body.name,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                password: req.body.password
+                password1: req.body.password1,
+                password2: req.body.password2
+            };
+            console.log(data);
+            if (!validate.validatePasswords(data.password1,data.password2)){
+                return res.render('login/register', {msg_error: "Las contraseñas ingresadas no coinciden."});
+            };
+            if(await userService.userExists(data)) {
+                return res.render('login/register', {msg_error: "El email ya se encuentra registrado."});
             };
             const newUserId = await userService.registerUser(data);
-            console.log("usuario registrado");
+            if(newUserId[0].length === 0) {
+                console.log("error al registrar el usuario");
+            };
+            return res.render('login/register',{msg_error: "Usuario creado con exito."});
         } catch (error){
             console.log("Error al registrar usuario", error);
             res.status(500).send("Error al registrar del usuario");

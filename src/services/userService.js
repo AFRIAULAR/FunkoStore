@@ -22,10 +22,16 @@ const registerUser = async (UserInfo) => {
     return response = await user.registerUser(UserInfo); 
 };
 
+const userExists = async(userInfo) => {
+    const response = await user.getUserByEmail(userInfo.email)
+    return response[0].length !== 0;
+}
+
 module.exports = {
     crearUsuario,
     verificarUser,
     getUserRole,
     getUserByEmail,
-    registerUser
+    registerUser,
+    userExists
 }

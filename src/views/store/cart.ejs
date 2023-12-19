@@ -83,7 +83,7 @@
                         <div class="w-100 d-flex justify-content-center">
                             <div class="">
                                 <div class="resume-quant">
-                                    <span class="resume-cols">Cantidad de productos</span>
+                                    <span class="resume-cols">Cantidad de items</span>
                                     <span class="resume-cols mx-5">
                                         <p id="quant"><%= data.cant_items %></p>
                                     </span>
@@ -111,7 +111,12 @@
                                     </span>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+                    </div>
+                    <div class="container d-flex justify-content-center">
+                        <form id="payItems" action="/shop/cart" method="POST">
+                            <button type="submit" class="btn btn-lg" aria-label="Close">PAGAR</button>
+                        </form>
                     </div>
                     <% }) %>
                 </section>

@@ -1,5 +1,5 @@
+const bcrypt = require('bcrypt');
 const { conn } = require('../config/conn');
-const crypt = require('bcryptjs')
 
 const crearUsuario = async (userInfo) => {
     try {
@@ -53,7 +53,7 @@ const getUserRole = async (user_id) => {
 };
 
 const registerUser = async (user_info) => {
-    const hash = await bcrypt.hash(user_info.password, 12)
+    const hash = await bcrypt.hash(user_info.password1,5);
     try {
         const [creado] = await conn.query('INSERT INTO user (name, lastname, email, password) VALUES (?, ?, ?, ?)',
             [user_info.name, user_info.lastname, user_info.email, hash]);

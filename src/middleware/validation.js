@@ -10,16 +10,17 @@ const validationInput = (req,res,next) =>{
     }
 };
 
-const validatePassword = (password,storedPassword) => {
-    /*console.log(password)
-    console.log(storedPassword)
-    return match = await bcrypt.compare(password, storedPassword);*/
-    console.log(password + " y " + storedPassword)
-    const result = password === storedPassword 
+const validatePasswords = (password1, password2) => {
+    const result = password1 === password2;
     return result;
+};
+
+const validatePassword = async (password,storedPassword) => {
+    return match = await bcrypt.compare(password, storedPassword);
 };
 
 module.exports = {
     validationInput,
+    validatePasswords,
     validatePassword
 }

@@ -1,11 +1,11 @@
 const { conn } = require('../config/conn');
 
-const addProduct = async (id, quantity) => {
+const addProduct = async (id, quantity,owner) => {
     try {
         const insertResult = await conn.query('INSERT INTO cart_detail (product_id, quantity) VALUES (?, ?);', [id, quantity]);
         const inserId = insertResult[0].insertId;
         console.log("inserid = " + inserId)
-        await conn.query('INSERT INTO cart (cart_detail_id, cart_owner) VALUES (?,?);',[inserId,1]);
+        await conn.query('INSERT INTO cart (cart_detail_id, cart_owner) VALUES (?,?);',[inserId,owner]);
     } catch (error){
         throw error;
     } finally{
@@ -13,11 +13,11 @@ const addProduct = async (id, quantity) => {
     }
 };
 
-const addCollection = async (id, quantity) => {
+const addCollection = async (id, quantity,owner) => {
     try {
         const insertResult = await conn.query('INSERT INTO cart_detail (collection_id,quantity) VALUES (?,?);',[id,quantity]);
         inserId = insertResult[0];
-        await conn.query('INSERT INTO cart (cart_detail_id, cart_owner) VALUES (?,1);',[inserId]);
+        await conn.query('INSERT INTO cart (cart_detail_id, cart_owner) VALUES (?,?);',[inserId,owner]);
            
     } catch (error){
         throw error;
@@ -33,7 +33,7 @@ const getItems = async (id) => {
             FROM product p\
             INNER JOIN cart_detail cd ON p.product_id = cd.product_id\
             INNER JOIN cart c ON cd.cart_detail_id = c.cart_detail_id\
-            WHERE c.cart_owner = 1 and cd.done IS NULL;'
+            WHERE c.cart_owner = ? and cd.paid IS NULL;',[id]
         );
         return result
     } catch (error){
@@ -53,7 +53,7 @@ const getTotal = async(id) => {
         FROM product p\
         INNER JOIN cart_detail cd ON p.product_id = cd.product_id\
         INNER JOIN cart c ON cd.cart_detail_id = c.cart_detail_id\
-        WHERE c.cart_owner = 1 AND cd.done IS NULL;'
+        WHERE c.cart_owner = ? AND cd.paid IS NULL;',[id]
         );
         return result
     } catch (error){
@@ -75,10 +75,25 @@ const removeById = async (idOwner,idDetail) => {
     }
 };
 
+const payItems = async (idOwner) => {
+    try {
+        await conn.query(
+            'UPDATE cart_detail\
+            SET paid = NOW()\
+            WHERE paid IS NULL AND cart_detail_id in (SELECT cart_detail_id FROM cart WHERE cart_owner = ?);',[idOwner]
+        );
+    } catch(error) {
+        throw error;
+    } finally {
+        conn.releaseConnection();
+    }
+};
+
 module.exports = {
     addProduct,
     addCollection,
     getItems,
     getTotal,
-    removeById
+    removeById,
+    payItems
 }

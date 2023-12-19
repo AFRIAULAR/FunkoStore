@@ -2,11 +2,11 @@ const validator = require('express-validator')
 
 
 const isLogged = (req, res, next) => {
-    if (req.session.isLogged) {
+    if (req.session.user) {
         return next();
     }
 
-    return res.status(401).send('Necesitas estar logueado para ingresar');
+    return res.render('login/login', { msg_error: "Necesita estar logueado para realizar esta acción." });
 };
 
 const userCredentials = async (req, res) => {

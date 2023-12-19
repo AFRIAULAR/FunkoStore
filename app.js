@@ -24,8 +24,16 @@ app.use(session({
     secret: 'S3cr3t01H@sh',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // Puedes ajustar esto según tus necesidades
+    cookie: { 
+        secure: false, 
+        maxAge: 24 * 60 * 60 * 1000 // Configura el tiempo de expiración en milisegundos
+    }
 }));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
 
 /*app.use(initSession());*/
 
@@ -41,7 +49,7 @@ app.use('/shop', storeRoutes);
 
 // middleware para manejar error 404
 app.use((req, res, next) => {
-    res.status(404).send('Recurso no encontrado');
+    res.render('home/not_found');
 });
 
 

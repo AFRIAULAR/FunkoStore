@@ -6,6 +6,13 @@
       </a>
     </picture>
     <ul class="navBar-ul">
+      <li>
+      <% if (user) { %>
+          <p>Bienvenido, <%= user.name %>!</p>
+      <% } else { %>
+          <p>No está logueado</p>
+      <% } %>
+      </li>
       <li class="navBar-li">
         <a href="/shop">SHOP</a>
       </li>

@@ -128,3 +128,50 @@ CREATE TABLE cart(
     FOREIGN KEY (cart_detail_id) REFERENCES cart_detail(cart_detail_id)
 );
 
+
+
+CREATE TABLE `role` (
+  `role_id` int NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(60) NOT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+CREATE TABLE `user` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(16) NOT NULL,
+  `lastname` varchar(80) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+CREATE TABLE `user_has_role` (
+  `user_user_id` int NOT NULL,
+  `role_role_id` int NOT NULL,
+  PRIMARY KEY (`user_user_id`,`role_role_id`),
+  KEY `fk_user_has_role_role1_idx` (`role_role_id`),
+  KEY `fk_user_has_role_user_idx` (`user_user_id`),
+  CONSTRAINT `fk_user_has_role_role1` FOREIGN KEY (`role_role_id`) REFERENCES `role` (`role_id`),
+  CONSTRAINT `fk_user_has_role_user` FOREIGN KEY (`user_user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+INSERT INTO `role` (`role_id`, `role_name`) VALUES ('1', 'admin'),('2', 'user');
+
+INSERT INTO `user` (`name`, `lastname`, `email`, `password`, `create_time`) VALUES 
+('Anabella', 'Bernachea', 'nekochan276@gmail.com', 'pass123', '2023-06-27 15:50:00'),
+('Javier', 'Salinas', 'Javiersalinas015@gmail.com', 'pass123', '2023-06-27 15:50:00'),
+('Jane', 'Smith', 'jane.smith@gmail.com', 'pass123', '2023-06-27 15:35:00'),
+('Alice', 'Johnson', 'alice.johnson@gmail.com', 'pass123', '2023-06-27 15:40:00'),
+('Bob', 'Anderson', 'bob.anderson@gmail.com', 'pass123', '2023-06-27 15:45:00'),
+('Eva', 'Martinez', 'eva.martinez@gmail.com', 'pass123', '2023-06-27 15:50:00'),
+('Vladimir', 'Del Cid', 'vladimir.delcid@bue.edu.ar', 'pass123', '2023-06-27 15:51:00');
+
+INSERT INTO `user_has_role` (`user_user_id`, `role_role_id`) VALUES 
+('1', '1'),
+('2', '1'),
+('3', '2'),
+('4', '2'),
+('5', '2'),
+('6', '2'),
+('7', '1');

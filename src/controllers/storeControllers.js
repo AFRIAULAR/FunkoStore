@@ -25,6 +25,5 @@ module.exports = {
             console.error('Error al obtener el producto:', error);
             res.status(500).send('Error al obtener el producto');
         }
-    },
-    cartPay: (req,res) => res.send ('Pagina de carrito de compras'), /*envio de solicitud? de pago*/
+    }
 }
