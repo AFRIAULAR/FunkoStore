@@ -1,8 +1,11 @@
 const express = require('express');
+const userService = require('../services/userService')
+const validate = require('../middleware/validation')
 const bcrypt = require('bcrypt');
-const {conn} = require ('../config/conn')
+/*const {conn} = require ('../config/conn')
 const middleware = require('../middleware/loginM')
-const models = require ('../models/login')
+
+const models = require ('../models/login')*/
 
 
 module.exports ={
@@ -12,28 +15,30 @@ module.exports ={
 
     logining: async (req, res) => {
       try {
-        const { email, password } = req.body;
-        const [user] = await conn.query('SELECT * FROM user WHERE email = ?', [email]);
+        data = {
+          email : req.body.email,
+          password : req.body.password
+      }
+      const user_info = await userService.getUserByEmail(data.email);
+      if (user_info[0].length === 0 && !validate.validatePassword(data.password,user_info[0][0].password)) {
+          res.render('login/login.ejs', {msg_error: "email o password incorrecto."});
+      }
     
-        if (user.length === 0) {
-          return res.render('login/login', { error: 'Usuario o contraseña incorrectos' });
-        }
-    
-        const passwordMatch = await bcrypt.compare(password, user[0].password);
+        /*const passwordMatch = await bcrypt.compare(password, user[0].password);
         if (!passwordMatch) {
           return res.render('login/login', { error: 'Usuario o contraseña incorrectos' });
-        }
-    
+        }*/
+        req.session.isLogged = true;
         req.session.user = {
-          userId: user[0].user_id,
-          name: user[0].name,
-          email: user[0].email,
+          userId: user_info[0].user_id,
+          name: user_info[0].name,
+          email: user_info[0].email,
         };
     
         res.redirect('/home');
       } catch (error) {
-        console.error('Error al procesar el inicio de sesión:', error);
-        res.status(500).send(`Error interno del servidor: ${error.message}`);
+        console.log('Error al procesar el incio de sesion', error);
+        res.status(500).send("Error al procesar el inicio de sesion")
       }
     },
 
@@ -48,17 +53,31 @@ module.exports ={
       const { name, lastname, email, password } = req.body;
     
       try {
-        const userId = await models.registerUser(name, lastname, email, password);
+        data = {
+          name: req.body.name,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          password: req.body.password
+      };
+      const newUserId = await userService.registerUser(data);
+      console.log("usuario registrado");
+  } catch (error){
+      console.log("Error al registrar usuario", error);
+      res.status(500).send("Error al registrar del usuario");
+  }
+},
+
+      /*  const userId = await models.registerUser(name, lastname, email, password);
         res.status(200).json({ userId, message: 'Usuario registrado con éxito.' });
       } catch (error) {
         console.error('Error al registrar usuario:', error);
         res.status(500).json({ message: 'Error al registrar usuario.' });
       }
-    },
+    },*/
 
     logout: (req,res) => {
-        /* implementacion de logica 
-        req.session.null ();*/
+        req.session.null ();
+        res.send("logout success!");
         res.redirect('/home');
     },
 }

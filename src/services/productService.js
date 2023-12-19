@@ -78,6 +78,11 @@ const getLicenceByProductId = async (productId) => {
     }
 };
 
+const getCategories = async () => {
+    return await products.getAll();
+  }
+
+
 module.exports = {
     getProducts,
     getProductById,
@@ -85,4 +90,5 @@ module.exports = {
     //getItemsOrderedById,
     getItems,
     getLicenceByProductId,
+    getCategories,
 }

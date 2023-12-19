@@ -6,6 +6,7 @@ const session = require('express-session')
 const { body, validationResult } = require('express-validator');
 const { initSession } = require('./src/utils/sesion');
 const expressValidator = require('express-validator');
+const multer = require('multer');
 
 const mainRoutes = require('./src/routes/mainRoutes.js');
 const adminRoutes = require('./src/routes/adminRoutes.js');
@@ -23,9 +24,9 @@ app.set('views',path.join(__dirname,'./src/views'));
 
 app.use(session({
   secret: 'S3cr3t01H@sh',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // Puedes ajustar esto según tus necesidades
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: true } // Puedes ajustar esto según tus necesidades
 }));
 
 app.use(initSession());
@@ -35,11 +36,25 @@ app.use((req, res, next) => {
   next();
 });
 
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, 'public/img/nuevos');
+  },
+  filename: (req, file, callback) => {
+    const extension = file.mimetype.split('/')[1];
+    const nombreImagen = `${Date.now()}.${extension}`;
+    callback(null, nombreImagen);
+  },
+});
+
+const upload = multer({ storage });
+
+
 app.use(methodOverride('__method'));
 app.use(express.urlencoded());
 app.use(express.json());
-//app.use(expressValidator());
 app.use(express.static('public'));
+app.use(upload.array('imagenes', 5)); // Multer
 
 app.use('/', mainRoutes);
 app.use('/admin', adminRoutes);

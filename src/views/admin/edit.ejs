@@ -43,7 +43,9 @@
         <h1 class="listado2">EDITAR ITEM</h1>
       
          
-            <form action="" method="POST" enctype="application/x-www-form-urlencoded"  class="form"> 
+            <form action="shop/edit" method="POST" enctype="application/x-www-form-urlencoded"  class="form"> 
+            <% if (producto && producto.length > 0) { %>
+            <% producto.forEach(product => { %>
             <div class="container-options"> 
               <label for="form-box">Categoría:</label>
               <select class="checkbox" id="form-box" name="category_id">
@@ -55,7 +57,7 @@
            
                 <label for="form-lic">Licencia:</label>
                 <select class="checkbox" id="form-lic" name="licence">
-                    <option value="" disabled selected hidden>Seleccionar</option>
+                    <option value="" disabled selected hidden><%= licence[0].licence_name %></option>
                     <option value="Pokemon" name="Pokemon">Pokemon</option>
                     <option value="Star Wars" name="Star Wars">Star Wars</option>
                     <option value="Harry Potter" name="Harry Potter">Harry Potter</option>
@@ -65,26 +67,27 @@
                 
                 <div class="container-options">
                     <label for="Produc-name">Nombre del producto:</label>
-                <input type="text" placeholder="Kakashi Hatake Shippuden Saga" id="Produc-name" class="input-data" name="product_name">
+                <input type="text" placeholder="<%= product.product_name %>" id="Produc-name" class="input-data" name="product_name">
                </div>
                 
-                <textarea rows="4" cols="50" placeholder="" class="container-options" name="product_description">Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori</textarea>
+                <textarea rows="4" cols="50" placeholder="" class="container-options" name="product_description"><%= product.product_description %></textarea>
                 
                 <div class="container-options">
                     <label for="Produc-id">SKU:</label>
-                <input type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data" name="sku">
+                <input type="text" placeholder="<%= product.sku %>" id="Produc-id" class="input-data" name="sku">
                 <label for="Produc-price">PRECIO:</label>
-                <input type="text" placeholder="$0.000,00" id="Produc-price" class="input-data" name="price">
+                <input type="text" placeholder="<%= product.price %>" id="Produc-price" class="input-data" name="price">
                 <label for="Produc-stock">STOCK:</label>
-                <input type="text" placeholder="0" id="Produc-stock" class="input-data" name="stock">
+                <input type="text" placeholder="<%= product.stock %>" id="Produc-stock" class="input-data" name="stock">
                </div>
 
                <div class="container-options">
                 <label for="Descuento">Descuento:</label>
-                <input type="text" placeholder="0%" id="Descuento" class="input-data" name="discount"> 
+                <input type="text" placeholder="<%= product.discount %>%" id="Descuento" class="input-data" name="discount"> 
 
                 <label for="cuotas">CUOTAS:</label>
               <select class="checkbox" id="cuotas" name="dues">
+                <option value=""><%= product.dues %> cuotas sin interes</option>
                 <option value="" disabled selected hidden>6 cuotas sin interés</option>
                 <option value="3 cuotas sin interes">3 cuotas sin interés</option>
                 <option value="6 cuotas con recargo">6 cuotas con recargo</option>
@@ -101,9 +104,11 @@
                <button id="image" accept="image/*" type="file" class="button" name="image_front image_back">Elegir Archivos</button>
               </div>
               
-              <div class=""><img src="/img/harry-potter-back.webp" alt="imagen miniatura de Kakashi Hatake de la coleccion Naruto Shippuden" class="mini-img">
-                <img src="/img/harry-potter.jpg" alt="imagen miniatura producto Kakashi Hatake de la Coleccion Naruto Shippuden" class="mini-img"></div>
-                
+              <div class=""><img src="<%= product.image_front %>" alt="<%= product.product_description %>" class="mini-img">
+                <img src="<%= product.image_back %>" alt="<%= product.product_description %>" class="mini-img"></div>
+                <% } else { %>
+                <p>No hay productos disponibles.</p>
+                <% }) %>
               <button class="cart-button3" type="submit">Modificar producto</button>
               
     </form>          

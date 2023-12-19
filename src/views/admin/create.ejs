@@ -43,23 +43,23 @@
         <h1 class="listado2">CREAR NUEVO ITEM</h1>
       
          
-            <form action="" method="POST" enctype="application/x-www-form-urlencoded" class="form"> 
+            <form action="/admin/create" method="POST" enctype="multipart/form-data" class="form"> 
             <div class="container-options"> 
               <label for="form-box">Categoría:</label>
               <select class="checkbox" id="form-box" name="category_id">
                 <option value="" disabled selected hidden>Seleccionar</option>
-                <option value="Figuras coleccionables">Figuras Coleccionables</option>
-                <option value="Llaveros">Llaveros</option>
-                <option value="Remeras">Remeras</option>
+                <option value="1">Figuras Coleccionables</option>
+                <option value="2">Llaveros</option>
+                <option value="3">Remeras</option>
               </select>
            
                 <label for="form-lic">Licencia:</label>
-                <select class="checkbox" id="form-lic" name="licence">
+                <select class="checkbox" id="form-lic" name="licence_id">
                   <option value="" disabled selected hidden>Seleccionar</option>
-                  <option value="Pokemon" name="Pokemon">Pokemon</option>
-                  <option value="Star Wars" name="Star Wars">Star Wars</option>
-                  <option value="Harry Potter" name="Harry Potter">Harry Potter</option>
-                  <option value="Naruto" name="Naruto">Naruto</option>
+                  <option value="1" name="Pokemon">Pokemon</option>
+                  <option value="2" name="Star Wars">Star Wars</option>
+                  <option value="3" name="Harry Potter">Harry Potter</option>
+                  <option value="4" name="Naruto">Naruto</option>
                 </select> 
                 </div>
                 
@@ -85,21 +85,54 @@
 
                 <label for="cuotas">CUOTAS:</label>
               <select class="checkbox" id="cuotas" name="dues">
-                <option value="" disabled selected hidden>3 cuotas sin interés</option>
-                <option value="3 cuotas sin interes">3 cuotas sin interés</option>
-                <option value="6 cuotas con recargo">6 cuotas con recargo</option>
-                <option value="9 cuotas con recargo">9 cuotas con recargo</option>
-                <option value="12 cuotas con recargo">12 cuotas con recargo</option>
-                <option value="18 cuotas con recargo">18 cuotas con recargo</option>
-                <option value="24 cuotas con recargo">24 cuotas con recargo</option>
+                <option value="0" disabled selected hidden>3 cuotas sin interés</option>
+                <option value="3">3 cuotas sin interés</option>
+                <option value="6">6 cuotas con recargo</option>
+                <option value="9">9 cuotas con recargo</option>
+                <option value="12 ">12 cuotas con recargo</option>
+                <option value="18">18 cuotas con recargo</option>
+                <option value="24">24 cuotas con recargo</option>
                </select>
                </div>
 
-              <div class="container-options">
+              <!--<div class="container-options">
                 <label for="image" style="cursor: pointer;">Imagenes:</label>
-               <!--<input type="file" name="Elegir archivo" id="image" accept="image/*"> -->
-               <button id="image" accept="image/*" type="file" class="button" name="image_front image_back">Elegir Archivos</button>
-              </div>
+                <input type="file" name="images" id="img" multiple>
+                <button type="button" class="button">Elegir Archivos</button>
+              </div>-->
+
+              <div id="status-message"></div>
+
+<button id="upload-button" type="button" class="button" onclick="uploadFiles()">Elegir Archivos</button>
+
+<script>
+  async function uploadFiles() {
+    const formData = new FormData();
+    const imageFront = document.getElementById('image_front').files[0];
+    const imageBack = document.getElementById('image_back').files[0];
+
+    formData.append('image_front', imageFront);
+    formData.append('image_back', imageBack);
+
+    try {
+      const response = await fetch('/admin/create', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        document.getElementById('status-message').innerText = 'Archivos subidos correctamente.';
+        document.getElementById('upload-button').style.display = 'none';
+      } else {
+        document.getElementById('status-message').innerText = 'Error al subir archivos. Inténtalo de nuevo.';
+      }
+    } catch (error) {
+      console.error('Error de red:', error.message);
+      document.getElementById('status-message').innerText = 'Error de red. Inténtalo de nuevo.';
+    }
+  }
+</script>
+
                 
               <button class="cart-button3" type="submit">Agregar Producto</button>
               <button class="cart-button3" type="reset">Limpiar</button>

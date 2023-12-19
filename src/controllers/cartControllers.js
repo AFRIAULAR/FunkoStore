@@ -24,7 +24,7 @@ module.exports = {
             res.redirect(referer);
         }
         catch (error){
-            console.error('Error al reniver el item del carrito:', error);
+            console.error('Error al remover el item del carrito:', error);
             res.status(500).send('Error al remover el item del carrito.',error);
         } 
     },
