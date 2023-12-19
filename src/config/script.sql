@@ -116,7 +116,7 @@ CREATE TABLE cart_detail(
     product_id INT,
     collection_id INT,
     quantity INT NOT NULL,
-    done DATE,
+    paid DATE,
     FOREIGN KEY (product_id) REFERENCES product(product_id),
     FOREIGN KEY (collection_id) REFERENCES collection(collection_id)
 );
