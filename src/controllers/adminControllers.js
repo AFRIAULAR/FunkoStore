@@ -5,7 +5,7 @@ const itemsService = require('../services/itemService');
 module.exports = {
 admin: async (req, res) => {
         try {
-            const products = await productService.getProducts(); // Asegúrate de tener datos aquí
+            const products = await productService.getProducts();
             res.render('admin/listado.ejs', { products: products });
         } catch (error) {
             console.error('Error al obtener el producto:', error);
