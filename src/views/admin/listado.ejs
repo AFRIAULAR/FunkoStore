@@ -1,137 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include ('../partials/head') %>
-<body>
-    <%- include ('../partials/header') %>
-        <main>
-            <div class="searchbar">
-                <img src="../assets/icons/search_icon.svg" class="searchbutton">
-                <input class="searchinput" type="text" placeholder="código, nombre o categoría">
-            </div>
-            <ul>
-                <li class="listado">LISTADO DE PRODUCTOS</li>
-                <li class="addlista">Agregar</li><img src="../assets/icons/plus-box.svg">
-            </ul>
-            <table class="tablita">
-                <thead>
-                    <tr>
-                        <th class="filalista">Id</th>
-                        <th class="filalista">Código</th>
-                        <th class="filalista">Nombre del Producto</th>
-                        <th class="filalista">Categoría</th>
-                        <th class="filalista"></th>
-                        <th class="filalista"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="filabody">1</td>
-                        <td class="filabody">STW001001</td>
-                        <td class="filabody">Baby Yoda Blueball</td>
-                        <td class="filabody">STAR WARS</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">2</td>
-                        <td class="filabody">STW001002</td>
-                        <td class="filabody">Boba Fett Fighter</td>
-                        <td class="filabody">STAR WARS</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">3</td>
-                        <td class="filabody">STW001003</td>
-                        <td class="filabody">Luke Skywalker & Grogu</td>
-                        <td class="filabody">STAR WARS</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">4</td>
-                        <td class="filabody">STW001004</td>
-                        <td class="filabody">Stormtrooper Lightsaber</td>
-                        <td class="filabody">STAR WARS</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">5</td>
-                        <td class="filabody">PKM001001</td>
-                        <td class="filabody">Charmander Smiley</td>
-                        <td class="filabody">STAR WARS</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">6</td>
-                        <td class="filabody">PKM001002</td>
-                        <td class="filabody">Dragonite Hi!</td>
-                        <td class="filabody">POKEMON</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">7</td>
-                        <td class="filabody">PKM001003</td>
-                        <td class="filabody">Pidgeotto Flying</td>
-                        <td class="filabody">POKEMON</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">8</td>
-                        <td class="filabody">PKM001004</td>
-                        <td class="filabody">Pikachu Smiley</td>
-                        <td class="filabody">POKEMON</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">9</td>
-                        <td class="filabody">PKM001005</td>
-                        <td class="filabody">Vulpix Fancy</td>
-                        <td class="filabody">POKEMON</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">10</td>
-                        <td class="filabody">HPT001001</td>
-                        <td class="filabody">Harry Potter & Hegwid</td>
-                        <td class="filabody">HARRY POTTER</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">11</td>
-                        <td class="filabody">HPT001002</td>
-                        <td class="filabody">Herminione Ball Dress</td>
-                        <td class="filabody">HARRY POTTER</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">12</td>
-                        <td class="filabody">HPT001003</td>
-                        <td class="filabody">Luna Lovegood Lion Mask</td>
-                        <td class="filabody">HARRY POTTER</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                    <tr>
-                        <td class="filabody">13</td>
-                        <td class="filabody">HPT001004</td>
-                        <td class="filabody">Snape Patronus</td>
-                        <td class="filabody">HARRY POTTER</td>
-                        <td class="filabody"><img src="../assets/icons/edit_pencil.svg"></td>
-                        <td class="filabody"><img src="../assets/icons/delete_trash.svg"></td>
-                    </tr>
-                </tbody>
-            </table>
 
-        </main>
-        <%- include ('../partials/footer') %>
-</body>
+    <body>
+        <%- include ('../partials/header') %>
+            <main>
+                <div class="container">
+                    <div class="container my-4 aling-items-start">
+                        <img src="../assets/icons/search_icon.svg" class="searchbutton">
+                        <input class="searchinput" type="text" placeholder="código, nombre o categoría">
+                    </div>
+
+                    <div class="container justify-content-center d-flex">
+                        <h1 class="my-3">
+                            LISTADO DE PRODUCTOS
+                        </h1>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col">Id</th>
+                                <th class="col">Código</th>
+                                <th class="col">Nombre del Producto</th>
+                                <th class="col">Categoría</th>
+                                <th class="col">Licencia</th>
+                                <th class="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% products.forEach(product => { %>
+                            <tr>
+                                <th scope="row"><%= product.product_id %></th>
+                                <td class=""><%= product.product_sku %></td>
+                                <td class=""><%= product.product_name %></td>
+                                <td class=""><%= product.category_name %></td>
+                                <td class=""><%= product.licence_name %></td>
+                                <td class="">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="EDITAR"><img src="../assets/icons/edit_pencil.svg"></a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="ELIMINAR"><img src="../assets/icons/delete_trash.svg"></a>
+                                        </div>
+                                    </div>
+                                </td> 
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+            </main>
+            <%- include ('../partials/footer') %>
+    </body>
+
 </html>

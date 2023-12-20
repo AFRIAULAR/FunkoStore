@@ -7,9 +7,6 @@ module.exports ={
     },*/
     home: async (req, res) => {
         try {
-            // Llamas al método getItems del servicio para obtener los datos
-            const items = await itemService.getItems(req.query); // Puedes pasar parámetros si es necesario
-            // Renderizas la vista 'home/index.ejs' y le pasas los datos obtenidos del servicio
             res.render('home/index.ejs');
         } catch (error) {
             // Manejo de errores
