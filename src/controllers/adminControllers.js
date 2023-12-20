@@ -1,6 +1,11 @@
 const express = require('express');
+const {conn} = require('../config/conn')
 const productService = require('../services/productService');
 const itemsService = require('../services/itemService');
+const modelsProduct = require('../models/products')
+const path = require('path');
+
+
 
 module.exports = {
 admin: async (req, res) => {
@@ -17,11 +22,29 @@ create:(req,res) => {
       )
 },
 creating: async (req, res) => {
-    const item = req.body;
-    const files = req.files;
-    await itemsService.createItem(item, files);
-    res.redirect('/admin');
+ 
+      const item = req.body
+  
+      const itemSchema = {
+        product_name: req.body.product_name,
+        product_description: req.body.product_description,
+        price: req.body.price,
+        stock: req.body.stock,
+        discount: req.body.discount,
+        sku: req.body.sku,
+        dues: req.body.dues,
+        image_front: '/proximamente1.jpg',
+        image_back: '/proximamente.jpg',
+        licence_id: req.body.licence_id,
+        category_id: req.body.category_id,
+      };
+      
+      console.log('req.body:', itemSchema);
+  
+      await modelsProduct.create(itemSchema);
+      res.redirect('/admin') 
   },
+
 editItem:  async (req, res) => {
     const id = req.params.id;
     const { data: categories } = await productService.getCategories();
@@ -38,12 +61,26 @@ editItem:  async (req, res) => {
     });
   },
 
-editingItem: async (req, res) => {
-    const id = req.params.id;
-    const item = req.body;
+editingItem: async (item, id) => {
+  const itemSchema = {
+    product_name: item.name,
+    product_description: item.description,
+    price: item.price,
+    stock: item.stock,
+    discount: item.discount,
+    sku: item.sku,
+    dues: item.dues,
+    image_front: '/imagen_front',
+    image_back: '/imagen_front',
+    licence_id: item.collection,
+    category_id: item.category
+  }
 
-    await ItemsService.edit(item, id);
-    res.redirect('/admin');
-  },
+  return await ItemModel.editarItem(itemSchema, {product_id: id}),
+  
+  res.redirect('/admin');
+},
+
+
 delete: (req,res) => res.send ('administrador eliminando item'), /*eliminar recursos del servidor*/
 }

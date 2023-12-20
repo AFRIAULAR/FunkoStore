@@ -21,7 +21,7 @@ module.exports = {
             const licence = await productService.getLicenceByProductId(productId);
             const related = await productService.getRelatedProduct(productId);
             res.render('store/item.ejs',{ producto : product, licence : licence, relacionados : related});    
-            //res.render('store/item.ejs', { producto: product, relacionados: related, licence: licence });
+            
         } catch (error) {
             console.error('Error al obtener el producto:', error);
             res.status(500).send('Error al obtener el producto');

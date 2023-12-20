@@ -39,105 +39,70 @@
 </header>
 
 <main>
-    <div class="text-center">    
+    <div class="text-center">
         <h1 class="listado2">CREAR NUEVO ITEM</h1>
-      
-         
-            <form action="/admin/create" method="POST" enctype="multipart/form-data" class="form"> 
-            <div class="container-options"> 
-              <label for="form-box">Categoría:</label>
-              <select class="checkbox" id="form-box" name="category_id">
-                <option value="" disabled selected hidden>Seleccionar</option>
-                <option value="1">Figuras Coleccionables</option>
-                <option value="2">Llaveros</option>
-                <option value="3">Remeras</option>
-              </select>
-           
+
+
+        <form action="/admin/create" method="POST" enctype="" class="form">
+            <div class="container-options">
+                <label for="form-box">Categoría:</label>
+                <select class="checkbox" id="form-box" name="category_id">
+                    <option value="" disabled selected hidden>Seleccionar</option>
+                    <option value="1">Figuras Coleccionables</option>
+                    <option value="2">Llaveros</option>
+                    <option value="3">Remeras</option>
+                </select>
                 <label for="form-lic">Licencia:</label>
-                <select class="checkbox" id="form-lic" name="licence_id">
-                  <option value="" disabled selected hidden>Seleccionar</option>
-                  <option value="1" name="Pokemon">Pokemon</option>
-                  <option value="2" name="Star Wars">Star Wars</option>
-                  <option value="3" name="Harry Potter">Harry Potter</option>
-                  <option value="4" name="Naruto">Naruto</option>
-                </select> 
-                </div>
-                
-                <div class="container-options">
-                    <label for="Produc-name">Nombre del producto:</label>
-                <input type="text" placeholder="Kakashi Hatake Shippuden Saga" id="Produc-name" class="input-data" name="product_name">
-               </div>
-                
-                <textarea rows="4" cols="50" placeholder=" Descripción del producto..." class="container-options" name="product_description"></textarea>
-                
-                <div class="container-options">
-                    <label for="Produc-id">SKU:</label>
-                <input type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data" name="sku">
+                <select name="licence_id" class="checkbox" id="form-lic">
+                    <option value="" disabled selected hidden>Seleccionar</option>
+                    <option value="1" name="Pokemon">Pokemon</option>
+                    <option value="2" name="Star Wars">Star Wars</option>
+                    <option value="3" name="Harry Potter">Harry Potter</option>
+                    <option value="4" name="Marvel">Marvel</option>
+                </select>
+            </div>
+            <div class="container-options">
+                <label for="Produc-name">Nombre del producto:</label>
+                <input type="text" name="product_name" placeholder="Kakashi Hatake Shippuden Saga" id="Produc-name"
+                    class="input-data">
+            </div>
+            <textarea name="product_description" rows="4" cols="50" placeholder=" Descripción del producto..."
+                class="container-options"></textarea>
+            <div class="container-options">
+                <label for="Produc-id">SKU:</label>
+                <input name="sku" type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data">
                 <label for="Produc-price">PRECIO:</label>
-                <input type="text" placeholder="$0.000,00" id="Produc-price" class="input-data" name="price">
+                <input name="price" type="text" placeholder="$0.000,00" id="Produc-price" class="input-data">
                 <label for="Produc-stock">STOCK:</label>
-                <input type="text" placeholder="0" id="Produc-stock" class="input-data" name="stock">
-               </div>
-
-               <div class="container-options">
+                <input name="stock" type="text" placeholder="0" id="Produc-stock" class="input-data">
+            </div>
+            <div class="container-options">
                 <label for="Descuento">Descuento:</label>
-                <input type="text" placeholder="0%" id="Descuento" class="input-data" name="discount"> 
-
+                <input name="discount" type="text" placeholder="0%" id="Descuento" class="input-data">
                 <label for="cuotas">CUOTAS:</label>
-              <select class="checkbox" id="cuotas" name="dues">
-                <option value="0" disabled selected hidden>3 cuotas sin interés</option>
-                <option value="3">3 cuotas sin interés</option>
-                <option value="6">6 cuotas con recargo</option>
-                <option value="9">9 cuotas con recargo</option>
-                <option value="12 ">12 cuotas con recargo</option>
-                <option value="18">18 cuotas con recargo</option>
-                <option value="24">24 cuotas con recargo</option>
-               </select>
-               </div>
+                <select name="dues" class="checkbox" id="cuotas">
+                    <option value="0" disabled selected hidden>3 cuotas sin interés</option>
+                    <option value="3">3 cuotas sin interés</option>
+                    <option value="6">6 cuotas con recargo</option>
+                    <option value="9">9 cuotas con recargo</option>
+                    <option value="12 ">12 cuotas con recargo</option>
+                    <option value="18">18 cuotas con recargo</option>
+                    <option value="24">24 cuotas con recargo</option>
+                </select>
+            </div>
 
-              <!--<div class="container-options">
+            <div class="container-options">
                 <label for="image" style="cursor: pointer;">Imagenes:</label>
-                <input type="file" name="images" id="img" multiple>
-                <button type="button" class="button">Elegir Archivos</button>
-              </div>-->
+                <input type="file" name="image" multiple>
 
-              <div id="status-message"></div>
+            </div>
 
-<button id="upload-button" type="button" class="button" onclick="uploadFiles()">Elegir Archivos</button>
+            <div id="status-message"></div>
 
-<script>
-  async function uploadFiles() {
-    const formData = new FormData();
-    const imageFront = document.getElementById('image_front').files[0];
-    const imageBack = document.getElementById('image_back').files[0];
+            <button class="cart-button3" type="submit">Agregar Producto</button>
+            <button class="cart-button3" type="reset">Limpiar</button>
 
-    formData.append('image_front', imageFront);
-    formData.append('image_back', imageBack);
-
-    try {
-      const response = await fetch('/admin/create', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (response.ok) {
-        document.getElementById('status-message').innerText = 'Archivos subidos correctamente.';
-        document.getElementById('upload-button').style.display = 'none';
-      } else {
-        document.getElementById('status-message').innerText = 'Error al subir archivos. Inténtalo de nuevo.';
-      }
-    } catch (error) {
-      console.error('Error de red:', error.message);
-      document.getElementById('status-message').innerText = 'Error de red. Inténtalo de nuevo.';
-    }
-  }
-</script>
-
-                
-              <button class="cart-button3" type="submit">Agregar Producto</button>
-              <button class="cart-button3" type="reset">Limpiar</button>
-              
-    </form>          
+        </form>
 </main>
 
 <footer>
@@ -160,11 +125,11 @@
                 </ul>
             </div>
             <div class="footer-logo">
-               <a href="/home"> <img src="../assets/branding/isotype.svg"></a>
+                <a href="/home"> <img src="../assets/branding/isotype.svg"></a>
             </div>
         </nav>
         <p class="footer-p">All rights reserved 2023 - Funkoshop @copyright</p>
     </section>
 </footer>
-</html>
 
+</html>

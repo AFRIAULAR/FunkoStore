@@ -35,7 +35,7 @@ module.exports ={
           email: user_info[0].email,
         };
     
-        res.redirect('/home');
+        res.redirect('/admin');
       } catch (error) {
         console.log('Error al procesar el incio de sesion', error);
         res.status(500).send("Error al procesar el inicio de sesion")

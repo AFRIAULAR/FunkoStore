@@ -24,7 +24,7 @@ const getRelatedProduct = async (productId) => {
         WHERE p.licence_id = (
             SELECT licence_id FROM product WHERE product_id = ?
             ) AND p.product_id != ? AND p.licence_id IS NOT NULL
-            LIMIT 3;
+            LIMIT 5;
         `;
 
         const [results] = await conn.query(sql, [productId, productId]);
@@ -57,15 +57,6 @@ const getItems = async () => {
     }
 };
 
-/*const getItemsOrderedById = async () => {
-    try {
-        const [results] = await conn.promise().query('SELECT * FROM product ORDER BY product_id');
-        return results;
-    } catch (error) {
-        console.error('Error al obtener información de productos:', error);
-        throw error;
-    }
-};*/
 
 const getLicenceByProductId = async (productId) => {
     try {
