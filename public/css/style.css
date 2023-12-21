@@ -550,3 +550,27 @@ textarea{
     font-weight: 400;
     line-height: normal;
 }
+
+
+
+.text-contact {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px;
+    } 
+
+.contact{ 
+    border-color:#30343f ;   
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.text-data:hover{
+    border-color: #E43E3E;
+}
+.center{
+justify-content: center;
+width: 80%;
+height: 100vh;
+}
