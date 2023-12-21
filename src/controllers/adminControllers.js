@@ -10,7 +10,7 @@ module.exports = {
       res.status(500).send('Error al obtener el producto');
     }
   },
-  collections: async(req,res) => {
+  collections: async (req, res) => {
     try {
       const collections = await productService.getCollections();
       res.render('admin/collections.ejs', { collections: collections });
@@ -52,7 +52,7 @@ module.exports = {
     await ItemsService.edit(item, id);
     res.redirect('/admin');
   },
-  delete: async (req, res) => {
+  delete_p: async (req, res) => {
     try {
       const productId = req.params.id
       await productService.deleteProductById(productId)
@@ -62,5 +62,16 @@ module.exports = {
       console.error('Error al eliminar el producto:', error);
       res.status(500).send('Error al eliminar el producto');
     }
-  }, /*eliminar recursos del servidor*/
+  },
+  delete_c: async (req, res) => {
+    try {
+      const productId = req.params.id
+      await productService.deleteCollectionById(collectioinId)
+      const referer = req.headers.referer || '/';
+      res.redirect(referer);
+    } catch (error) {
+      console.error('Error al eliminar la coleccion:', error);
+      res.status(500).send('Error al eliminar la coleccion');
+    }
+  } /*eliminar recursos del servidor*/
 }

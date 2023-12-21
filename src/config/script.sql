@@ -37,9 +37,10 @@ CREATE TABLE CollectionProduct (
     collection_id INT,
     product_id INT,
     PRIMARY KEY (collection_id, product_id),
-    FOREIGN KEY (collection_id) REFERENCES collection(collection_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id)
+    FOREIGN KEY (collection_id) REFERENCES collection(collection_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE NO ACTION
 );
+
 
 
 

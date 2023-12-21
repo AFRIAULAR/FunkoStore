@@ -96,6 +96,16 @@ const deleteProductById = async(productId) => {
     }
 }
 
+const deleteCollectionById = async (collectionId) => {
+    try {
+        await conn.query('DELETE FROM collection WHERE collection_id = ?;',[productId]);
+    } catch(error) {
+        throw error;
+    } finally {
+        conn.releaseConnection();
+    }
+}
+
 module.exports = {
     getProducts,
     getProductById,

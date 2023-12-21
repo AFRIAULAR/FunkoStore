@@ -20,12 +20,15 @@ const getCollections = async () => {
     return products.getCollections();
 };
 
+const deleteCollectionById = async (id) => {
+    return products.deleteCollectionById(id);
+};
 
 module.exports = {
     getProducts,
     getProductById,
     getRelated,
     deleteProductById,
-    getCollections
-
+    getCollections,
+    deleteCollectionById
 }
