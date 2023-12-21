@@ -75,11 +75,34 @@ const getRelated = async (productId) => {
     }
 }
 
+const getCollections = async () => {
+    try{
+        const [rows] = await conn.query('SELECT * FROM collection');
+        return rows
+    } catch(error) {
+        console.log(error);
+    } finally {
+        conn.releaseConnection();
+    }
+};
+
+const deleteProductById = async(productId) => {
+    try {
+        await conn.query('DELETE FROM product WHERE product_id = ?;',[productId]);
+    } catch(error) {
+        throw error;
+    } finally {
+        conn.releaseConnection();
+    }
+}
+
 module.exports = {
     getProducts,
     getProductById,
     getProducsByLicence,
     getProductsMajorPriceRange,
     getProductsMinorPriceRange,
-    getRelated
+    getRelated,
+    getCollections,
+    deleteProductById
 }

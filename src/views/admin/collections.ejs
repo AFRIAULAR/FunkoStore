@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('../partials/head') %>
+
+    <body>
+        <%- include ('../partials/header') %>
+            <main>
+                <div class="container">
+                    <div class="container my-4 aling-items-start">
+                        <img src="../assets/icons/search_icon.svg" class="searchbutton">
+                        <input class="searchinput" type="text" placeholder="código, nombre o categoría">
+                    </div>
+                    <div class="container justify-content-center d-flex">
+                        <h1 class="my-3">
+                            LISTADO DE COLECCIONES
+                        </h1>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="col">Id</th>
+                                <th class="col">Código</th>
+                                <th class="col">Nombre del Producto</th>
+                                <th class="col">Categoría</th>
+                                <th class="col">Licencia</th>
+                                <th class="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% collections.forEach(collection => { %>
+                                <tr>
+                                    <th scope="row">
+                                        <%= collection.collection_id %>
+                                    </th>
+                                    <td class="">
+                                        <%= collection.collection_sku %>
+                                    </td>
+                                    <td class="">
+                                        <%= collection.collection_name %>
+                                    </td>
+                                    <td class="">
+                                        <%= collection.category_name %>
+                                    </td>
+                                    <td class="">
+                                        <%= collection.licence_name %>
+                                    </td>
+                                    <td class="">
+                                        <div class="row justify-content-center d-flex">
+                                            <div class="col">
+                                                <a href="EDITAR"><img src="../assets/icons/edit_pencil.svg"></a>
+                                            </div>
+                                            <div class="col">
+                                                <div class="col">
+                                                    <a href="/admin/delete/<%= collection.collection_id %>"><img
+                                                            src="../assets/icons/delete_trash.svg"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <%- include ('../partials/footer') %>
+    </body>
+
+</html>
