@@ -106,6 +106,17 @@ const deleteCollectionById = async (collectionId) => {
     }
 }
 
+const create = async (params) => {
+    try {
+        const [rows] = await conn.query('INSERT INTO product SET ? ;', params)
+        return rows
+    } catch (error) {
+        throw error
+    } finally {
+        conn.releaseConnection()
+    }
+  }
+
 module.exports = {
     getProducts,
     getProductById,
@@ -114,5 +125,6 @@ module.exports = {
     getProductsMinorPriceRange,
     getRelated,
     getCollections,
-    deleteProductById
+    deleteProductById,
+    create
 }

@@ -24,11 +24,16 @@ const deleteCollectionById = async (id) => {
     return products.deleteCollectionById(id);
 };
 
+const create = async (item) => {
+    products.create(item);
+};
+
 module.exports = {
     getProducts,
     getProductById,
     getRelated,
     deleteProductById,
     getCollections,
-    deleteCollectionById
+    deleteCollectionById,
+    create
 }

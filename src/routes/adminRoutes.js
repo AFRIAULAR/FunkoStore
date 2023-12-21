@@ -5,8 +5,8 @@ const adminControllers = require('../controllers/adminControllers.js');
 
 router.get('/products', adminControllers.admin) /*solicitud de datos*/
 router.get('/collections',adminControllers.collections)
-router.get('/admin/create', adminControllers.create)
-router.post('/admin/create', adminControllers.creating) /*envio de datos*/
+router.get('/create', adminControllers.create)
+router.post('/create', adminControllers.creating) /*envio de datos*/
 router.get('/admin/edit/:id', adminControllers.editItem) 
 router.put('/admin/edit/:id', adminControllers.editingItem) /*actualizar o crear datos*/
 router.get('/delete_p/:id', adminControllers.delete_p)

@@ -4,7 +4,7 @@ module.exports = {
   admin: async (req, res) => {
     try {
       const products = await productService.getProducts();
-      res.render('admin/listado.ejs', { products: products});
+      res.render('admin/listado.ejs', { products: products });
     } catch (error) {
       console.error('Error al obtener el producto:', error);
       res.status(500).send('Error al obtener el producto');
@@ -24,10 +24,29 @@ module.exports = {
     )
   },
   creating: async (req, res) => {
-    const item = req.body;
-    const files = req.files;
-    await itemsService.createItem(item, files);
-    res.redirect('/admin');
+
+    try {
+      const item = req.body
+
+      const itemSchema = {
+        product_name: req.body.product_name,
+        product_description: req.body.product_description,
+        product_price: req.body.price,
+        product_sku: req.body.sku,
+        dues: req.body.dues,
+        img_front: '/proximamente1.jpg',
+        img_back: '/proximamente.jpg',
+        licence_name: req.body.licence_id,
+        category_name: req.body.category_id,
+      };
+
+      console.log('req.body:', itemSchema);
+      await productService.create(itemSchema);
+      res.redirect('/admin/products');
+    } catch (error) {
+      console.log("Error al crear el item", error);
+      res.send("error al crear el item");
+    }
   },
   editItem: async (req, res) => {
     const id = req.params.id;
