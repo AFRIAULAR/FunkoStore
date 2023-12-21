@@ -14,7 +14,9 @@ module.exports ={
             res.status(500).send('Error al obtener los items');
         }
     },
-    contact: (req, res) => res.send("Pagina de Contacto"),
+    contact: (req, res) => {
+        res.render('home/contact');
+    },
     about: (req, res) => res.send("Pagina Sobre Nosotros"),
     faqs: (req, res) => res.send("Pagina de preguntas frecuentes"),
 }

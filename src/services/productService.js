@@ -28,6 +28,9 @@ const create = async (item) => {
     products.create(item);
 };
 
+const update = async(item,id) => {
+    products.update(id,item);
+};
 module.exports = {
     getProducts,
     getProductById,
@@ -35,5 +38,6 @@ module.exports = {
     deleteProductById,
     getCollections,
     deleteCollectionById,
-    create
+    create,
+    update
 }

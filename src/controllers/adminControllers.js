@@ -20,13 +20,10 @@ module.exports = {
     }
   },
   create: (req, res) => {
-    res.render('admin/create.ejs'
-    )
+    res.render('admin/create.ejs');
   },
   creating: async (req, res) => {
-
     try {
-      const item = req.body
 
       const itemSchema = {
         product_name: req.body.product_name,
@@ -49,28 +46,39 @@ module.exports = {
     }
   },
   editItem: async (req, res) => {
-    const id = req.params.id;
-    const { data: categories } = await productService.getCategories();
-    const { data: licences } = await productService.getLicenceByProductId();
-    const { data } = await ItemsService.getItem(id);
-    console.log(categories, licences);
-    res.render('./admin/edit', {
-      view: {
-        title: `Edit Product #${id} | Admin Funkoshop`
-      },
-      item: data[0],
-      categories,
-      licences
-    });
+    try{
+      const id = req.params.id;
+      const products = await productService.getProductById(id);
+      res.render('admin/edit', {products});
+    } catch(error) {
+      console.log(error);
+    }  
   },
-
   editingItem: async (req, res) => {
-    const id = req.params.id;
-    const item = req.body;
-
-    await ItemsService.edit(item, id);
-    res.redirect('/admin');
+    try {
+      const id = req.params.id;
+  
+      const updatedItem = {
+        product_name: req.body.product_name,
+        product_description: req.body.product_description,
+        product_price: req.body.product_price,
+        product_sku: req.body.product_sku,
+        dues: req.body.dues,
+        img_front: '/proximamente1.jpg',
+        img_back: '/proximamente.jpg',
+        licence_name: req.body.licence_name,
+        category_name: req.body.category_name,
+      };
+  
+      await productService.update(id, updatedItem);
+  
+      res.redirect('/admin/products');
+    } catch (error) {
+      console.log("Error al editar el elemento", error);
+      res.send("Error al editar el elemento");
+    }
   },
+  
   delete_p: async (req, res) => {
     try {
       const productId = req.params.id

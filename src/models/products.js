@@ -76,20 +76,20 @@ const getRelated = async (productId) => {
 }
 
 const getCollections = async () => {
-    try{
+    try {
         const [rows] = await conn.query('SELECT * FROM collection');
         return rows
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     } finally {
         conn.releaseConnection();
     }
 };
 
-const deleteProductById = async(productId) => {
+const deleteProductById = async (productId) => {
     try {
-        await conn.query('DELETE FROM product WHERE product_id = ?;',[productId]);
-    } catch(error) {
+        await conn.query('DELETE FROM product WHERE product_id = ?;', [productId]);
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -98,8 +98,8 @@ const deleteProductById = async(productId) => {
 
 const deleteCollectionById = async (collectionId) => {
     try {
-        await conn.query('DELETE FROM collection WHERE collection_id = ?;',[productId]);
-    } catch(error) {
+        await conn.query('DELETE FROM collection WHERE collection_id = ?;', [productId]);
+    } catch (error) {
         throw error;
     } finally {
         conn.releaseConnection();
@@ -115,7 +115,32 @@ const create = async (params) => {
     } finally {
         conn.releaseConnection()
     }
-  }
+}
+const update = async (productId, updatedParams) => {
+    try {
+        const row = await conn.query('UPDATE product\
+            SET \
+            licence_name = ?,\
+            category_name = ?,\
+            product_name = ?,\
+            product_description = ?,\
+            product_price = ?,\
+            dues = ?,\
+            product_sku = ?,\
+            img_front = ?,\
+            img_back = ?.\
+        WHERE product_id = ?;\
+        ',updateParams.licence_name,updateParams.category_name,updateParams.product_name,updateParams.product_description,
+        updateParams.product_price,updateParams.dues,updateParams.product_sku,updateParams.img_front,updateParams.img_back,productId);
+        console.log(query + "    " + productId)
+    } catch (error) {
+        throw error;
+    } finally {
+        conn.releaseConnection();
+    }
+};
+
+
 
 module.exports = {
     getProducts,
@@ -126,5 +151,6 @@ module.exports = {
     getRelated,
     getCollections,
     deleteProductById,
-    create
+    create,
+    update
 }

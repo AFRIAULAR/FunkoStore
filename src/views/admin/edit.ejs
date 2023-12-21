@@ -8,12 +8,12 @@
         <div class="text-center">
             <h1 class="listado2">CREAR NUEVO ITEM</h1>
         </div>
-        
+        <% products.forEach(product=> { %>
         <div class="container justify-content-center d-flex">
-            <form action="/admin/create" method="POST" enctype="" class="form">
+            <form action="/admin/edit/<%= product.product_id %>" method="POST" enctype="" class="form">
                 <div class="container-options container justify-content-center d-flex">
                     <label for="form-box">Categoría:</label>
-                    <select class="checkbox" id="form-box" name="category_id">
+                    <select class="checkbox" id="form-box" name="category_id" value="<%= product.category_name %>">
                         <option value="" disabled selected hidden>Seleccionar</option>
                         <option value="Animation & Cartoons">Animation & Cartoons</option>
                         <option value="Comics & Superheroes">Comics & Superheroes</option>
@@ -21,7 +21,7 @@
                         <option value="Anime & Manga">Anime & Manga</option>
                     </select>
                     <label for="form-lic">Licencia:</label>
-                    <select name="licence_id" class="checkbox" id="form-lic">
+                    <select name="licence_id" class="checkbox" id="form-lic" value="<%= product.licence_name %>">
                         <option value="" disabled selected hidden>Seleccionar</option>
                         <option value="Pokemon" name="Pokemon">Pokemon</option>
                         <option value="Star Wars" name="Star Wars">Star Wars</option>
@@ -32,21 +32,22 @@
                 <div class="container-options container justify-content-center d-flex">
                     <label for="Produc-name">Nombre del producto:</label>
                     <input type="text" name="product_name" placeholder="Kakashi Hatake Shippuden Saga" id="Produc-name"
-                        class="input-data">
+                        class="input-data" value="<%= product.product_name %>">
                 </div>
                 <div class="container justify-content-center d-flex">
                     <textarea name="product_description" rows="4" cols="50" placeholder=" Descripción del producto..."
                     class="container-options">
+                    <%= product.product_description %>
                 </textarea>
                 </div>
                 
                 <div class="container-options container justify-content-center d-flex">
                     <label for="Produc-id">SKU:</label>
-                    <input name="sku" type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data">
+                    <input value="<%= product.product_sku %>" name="sku" type="text" placeholder="SSK111AB001" id="Produc-id" class="input-data" value="<%= product.product_sku %>">
                     <label for="Produc-price">PRECIO:</label>
-                    <input name="price" type="text" placeholder="$0.000,00" id="Produc-price" class="input-data">
+                    <input value="<%= product.product_price %>" name="price" type="text" placeholder="$0.000,00" id="Produc-price" class="input-data">
                     <label for="Produc-stock">STOCK:</label>
-                    <input name="stock" type="text" placeholder="0" id="Produc-stock" class="input-data">
+                    <input value="25" name="stock" type="text" placeholder="0" id="Produc-stock" class="input-data">
                 </div>
                 <div class="container-options container justify-content-center d-flex">
                     <label for="Descuento">Descuento:</label>
@@ -76,7 +77,8 @@
                 </div>
 
             </form>
-        </div>    
+        </div>
+        <% }) %>    
     </main>
     <%- include ('../partials/footer') %>
 </body>
